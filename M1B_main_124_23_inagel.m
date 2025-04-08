@@ -65,20 +65,31 @@ Speed_Sedan_Summer_Test4 = testData(:,30);
 Speed_Sedan_Summer_Test5 = testData(:,31);
 
 % SUV
-Speed_SUV_Winter_Test1
-Speed_SUV_Winter_Test2
-Speed_SUV_Winter_Test3
-Speed_SUV_Winter_Test4
-Speed_SUV_Winter_Test5
+Speed_SUV_Winter_Test1 = testData(:,32);
+Speed_SUV_Winter_Test2 = testData(:,33);
+Speed_SUV_Winter_Test3 = testData(:,34);
+Speed_SUV_Winter_Test4 = testData(:,35);
+Speed_SUV_Winter_Test5 = testData(:,36);
+Speed_SUV_AllSeason_Test1 = testData(:,37);
+Speed_SUV_AllSeason_Test2 = testData(:,38);
+Speed_SUV_AllSeason_Test3 = testData(:,39);
+Speed_SUV_AllSeason_Test4 = testData(:,40);
+Speed_SUV_AllSeason_Test5 = testData(:,41);
+Speed_SUV_Summer_Test1 = testData(:,42);
+Speed_SUV_Summer_Test2 = testData(:,43);
+Speed_SUV_Summer_Test3 = testData(:,44);
+Speed_SUV_Summer_Test4 = testData(:,45);
+Speed_SUV_Summer_Test5 = testData(:,46);
+
 
 %% ____________________
 %% CALCULATIONS
 
-Test1 = M1A_sub1_124_23_thussp(test_vec);
+Test1 = M1B_sub1_124_23_thussp(Time);
 
-Test2 = M1A_sub2_124_23_sdimeola(test_vec);
+Test2 = M1B_sub2_124_23_sdimeola(Time);
 
-Test3 =  M1A_sub3_124_23_muell147(test_vec);
+Test3 =  M1B_sub3_124_23_muell147(Time);
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
@@ -89,6 +100,53 @@ Test3 =  M1A_sub3_124_23_muell147(test_vec);
 % Specifically, Plot each car
 % Compact Car
 % -Winter, All, Summer
+
+
+subplot(1,3,1);
+x = Time;
+plot(x,Speed_Compact_Winter_Test1,'Color',[0.466 0.6740 0.1880]);
+hold on
+plot(x,Speed_Compact_Winter_Test2,'Color',[0.85 0.325 0.0980]);
+plot(x,Speed_Compact_Winter_Test3,'Color',[0.929 0.6940 0.1250]);
+plot(x,Speed_Compact_Winter_Test4,'Color',[0.494 0.1840 0.5560]);
+plot(x,Speed_Compact_Winter_Test5,'Color',[0 0.4470 0.7410]);
+title('Winter Tires');
+sgtitle('Raw Experimental Data for Compact-Sytle Car');
+xlabel('Time (s)');
+ylabel('Velocity (m/s)');
+
+subplot(1,3,2);
+x = Time;
+plot(x,Speed_Compact_AllSeason_Test1,'Color',[0.466 0.6740 0.1880]);
+hold on
+plot(x,Speed_Compact_AllSeason_Test2,'Color',[0.85 0.325 0.0980]);
+plot(x,Speed_Compact_AllSeason_Test3,'Color',[0.929 0.6940 0.1250]);
+plot(x,Speed_Compact_AllSeason_Test4,'Color',[0.494 0.1840 0.5560]);
+plot(x,Speed_Compact_AllSeason_Test5,'Color',[0 0.4470 0.7410]);
+title('All-Season Tires');
+xlabel('Time (s)');
+ylabel('Velocity (m/s)');
+
+
+subplot(1,3,3);
+x = Time;
+plot(x,Speed_Compact_Summer_Test1,'Color',[0.466 0.6740 0.1880]);
+hold on
+plot(x,Speed_Compact_Summer_Test2,'Color',[0.85 0.325 0.0980]);
+plot(x,Speed_Compact_Summer_Test3,'Color',[0.929 0.6940 0.1250]);
+plot(x,Speed_Compact_Summer_Test4,'Color',[0.494 0.1840 0.5560]);
+plot(x,Speed_Compact_Summer_Test5,'Color',[0 0.4470 0.7410]);
+title('Summer Tires');
+xlabel('Time (s)');
+ylabel('Velocity (m/s)');
+
+
+
+%plot(Speed_Compact_Winter_Test1,'b', ...
+    %Speed_Compact_Winter_Test2,'c', ...
+    %Speed_Compact_Winter_Test3,'m',Speed_Compact_Winter_Test4,'y', ...
+   % Speed_Compact_Winter_Test5,'g');
+
 % Sedan Car
 % -Winter, All, Summer
 % SUV
