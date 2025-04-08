@@ -65,6 +65,11 @@ Speed_Sedan_Summer_Test4 = testData(:,30);
 Speed_Sedan_Summer_Test5 = testData(:,31);
 
 % SUV
+Speed_SUV_Winter_Test1
+Speed_SUV_Winter_Test2
+Speed_SUV_Winter_Test3
+Speed_SUV_Winter_Test4
+Speed_SUV_Winter_Test5
 
 %% ____________________
 %% CALCULATIONS
