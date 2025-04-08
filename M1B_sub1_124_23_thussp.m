@@ -1,10 +1,10 @@
-function[Output] = M1A_sub1_124_23_thussp(Input)
+function[Output] = M1B_sub1_124_23_thussp(Input)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run subfunction #1: Manages noise and errors within the data
 %
 % Function Call
-% [Output] = M1A_sub1_124_23_thussp(Input)
+% [Output] = M1B_sub1_124_23_thussp(Input)
 %
 % Input Arguments
 % Input
@@ -13,7 +13,7 @@ function[Output] = M1A_sub1_124_23_thussp(Input)
 % Output
 %
 % Assignment Information
-%   Assignment:     M1A, Problem 4
+%   Assignment:     M1A, Problem xx
 %   Team member:    Patrick Thuss, thussp@purdue.edu [repeat for each person]
 %   Team ID:        124-23
 %   Academic Integrity:

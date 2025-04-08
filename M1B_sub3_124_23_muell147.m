@@ -1,10 +1,10 @@
-function [Output]=  M1A_sub3_124_23_muell147(Input)
+function [Output]=  M1B_sub3_124_23_muell147(Input)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132
 %
 % Subfunction 4- finding initial and final velocities, testing function call
 % Function Call
-% [Output]=  M1A_sub3_124_23_muell147(Input)
+% [Output]=  M1B_sub3_124_23_muell147(Input)
 %
 % Input Arguments
 % Input
@@ -13,7 +13,7 @@ function [Output]=  M1A_sub3_124_23_muell147(Input)
 % Output
 %
 % Assignment Information
-%   Assignment:     M1A, Problem 1
+%   Assignment:     M1B, Problem xx
 %   Team member:    Elizabeth Mueller, muell147@purdue.edu [repeat for each person]
 %   Team ID:        124-23
 %   Academic Integrity:

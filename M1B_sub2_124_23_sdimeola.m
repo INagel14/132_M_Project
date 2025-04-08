@@ -1,10 +1,10 @@
-function[Output] = M1A_sub2_124_23_sdimeola(Input)
+function[Output] = M1B_sub2_124_23_sdimeola(Input)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run subfunction 3 to find the final and inital speed
 %
 % Function Call
-% [Output] = M1A_sub2_124_23_sdimeola(Input)
+% [Output] = M1B_sub2_124_23_sdimeola(Input)
 %
 % Input Arguments
 % Input
@@ -13,7 +13,7 @@ function[Output] = M1A_sub2_124_23_sdimeola(Input)
 % Output
 %
 % Assignment Information
-%   Assignment:     M1A, Problem 4
+%   Assignment:     M1B, Problem xx
 %   Team member:    Skylar DiMeola, sdimeola@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:
