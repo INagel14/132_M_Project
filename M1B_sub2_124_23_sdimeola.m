@@ -24,16 +24,22 @@ function[Output] = M1B_sub2_124_23_sdimeola(Input)
 
 %% ____________________
 %% INITIALIZATION
-
+CruiseAutoData = readmatrix("Sp25_cruiseAuto_experimental_data.csv");
+TimeOg = CruiseAutoData(:,1);
+SpeedCompactOg = CruiseAutoData(:,2);
 
 %% ____________________
 %% CALCULATIONS
-
+threshold1 = 1.37;
+Idx1 = SpeedCompactOg >= threshold1;
+SpeedCompactOg = SpeedCompactOg(Idx1);
+TimeOg = TimeOg(Idx1);
 Output = Input .* 3;
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
-
+figure;
+scatter(TimeOg, SpeedCompactOg, 'o');
 
 %% ____________________
 %% RESULTS
