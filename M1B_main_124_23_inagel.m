@@ -47,6 +47,9 @@ Speed_Compact_Summer_Test3 = testData(:,14);
 Speed_Compact_Summer_Test4 = testData(:,15);
 Speed_Compact_Summer_Test5 = testData(:,16);
 
+% To simplify in the future, make all 5 in one variable like:
+% TestVar = testData(:,2:6);
+
 % Sedan
 Speed_Sedan_Winter_Test1 = testData(:,17);
 Speed_Sedan_Winter_Test2 = testData(:,18);
@@ -93,7 +96,6 @@ Speed_SUV_Summer_Test5 = testData(:,46);
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
-
 
 % Winter Tires
 
