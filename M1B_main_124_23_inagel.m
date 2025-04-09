@@ -13,7 +13,7 @@ function[] = M1B_main_124_23_inagel()
 % None
 %
 % Assignment Information
-%   Assignment:     M1B, Problem xx
+%   Assignment:     M1B, Problem 3
 %   Team member:    Isaac Nagel, inagel@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:
@@ -29,6 +29,9 @@ testData = readmatrix('Sp25_cruiseAuto_experimental_data.csv','NumHeaderLines',1
 
 % Pull in ALL the columns for graphical analysis
 Time = testData(:,1);
+
+% In the future, could make a variable for all 5 trials, then graph. Use
+% the set function to then set the color for each line of the graph. 
 
 % Compact Car
 Speed_Compact_Winter_Test1 = testData(:,2);
@@ -380,6 +383,7 @@ hold off
 title('SUV-Summer Tires');
 xlabel('Time (s)');
 ylabel('Velocity (m/s)');
+
 
 %% ____________________
 %% RESULTS
