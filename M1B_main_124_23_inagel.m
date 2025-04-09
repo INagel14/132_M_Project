@@ -194,6 +194,7 @@ xlabel('Time (s)');
 ylabel('Velocity (m/s)');
 
 
+
 % Summer
 
 % Compact Summer
@@ -211,6 +212,7 @@ title('Compact');
 sgtitle('Raw Experimental Data for Summer Tires');
 xlabel('Time (s)');
 ylabel('Velocity (m/s)');
+legend('Test 1','Test 2','Test 3','Test 4','Test 5','Location','best');
 
 % Sedan Summer
 subplot(1,3,2);
@@ -257,7 +259,8 @@ plot(x,Speed_Compact_Winter_Test4,'Color',[0.494 0.1840 0.5560]);
 plot(x,Speed_Compact_Winter_Test5,'Color',[0 0.4470 0.7410]);
 hold off
 title('Compact-Winter Tires');
-sgtitle('All Raw Experimental Data Combined');
+sgtitle(['All Raw Experimental Data For Winter, All-Season, and Summer Tires' ...
+    ' On Compacts, Sedans, and SUVs']);
 xlabel('Time (s)');
 ylabel('Velocity (m/s)');
 legend('Test 1','Test 2','Test 3','Test 4','Test 5','Location','best');
