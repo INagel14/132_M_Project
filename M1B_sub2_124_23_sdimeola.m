@@ -1,4 +1,5 @@
-function[Output] = M1B_sub2_124_23_sdimeola(Input)
+
+unction[Output] = M1B_sub2_124_23_sdimeola(Input)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run subfunction 3 to find the final and inital speed
@@ -14,7 +15,7 @@ function[Output] = M1B_sub2_124_23_sdimeola(Input)
 %
 % Assignment Information
 %   Assignment:     M1B, Problem xx
-%   Team member:    Skylar DiMeola, sdimeola@purdue.edu
+%   Team member:    Skyler DiMeola, sdimeola@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:
 %     [N/A] We worked with one or more peers but our collaboration
