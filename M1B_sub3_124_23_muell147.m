@@ -37,8 +37,7 @@ slope_threshold= 0.1; % value that makes sure slope is close to 0
 index= 0; %setting index for determing when flatenned curve starts
 %% ____________________
 %% CALCULATIONS
-Output = Input .* 3; %practice output
-% finding initial velocity
+Output = Input .* 3; %practicing subfunction
 
 %finding linear model of start to acceleration time
 linstart= polyfit(xdata, ydata, 1); 
@@ -70,7 +69,8 @@ Vf= mean(Vfdata); % averaging for final velocity
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
-disp(flat_indices)
+fprintf('The initial velocity is %.3f\n', Vi)
+fprintf('The final velocity is %.3f\n', Vf)
 
 %% ____________________
 %% RESULTS
