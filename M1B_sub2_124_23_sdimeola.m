@@ -80,7 +80,7 @@ disp(count);
 %% ____________________
 %% RESULTS
 fprintf('Data successfully passed to subfunction 2 programmed by Skyler DiMeola.\n')
-
+end
 %% ____________________
 %% ACADEMIC INTEGRITY STATEMENT
 % We have not used source code obtained from any other unauthorized
