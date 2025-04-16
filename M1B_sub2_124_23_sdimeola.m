@@ -1,5 +1,5 @@
 
-unction[Output] = M1B_sub2_124_23_sdimeola(Input)
+function[Output] = M1B_sub2_124_23_sdimeola(Input)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run subfunction 3 to find the final and inital speed
@@ -26,22 +26,57 @@ unction[Output] = M1B_sub2_124_23_sdimeola(Input)
 %% ____________________
 %% INITIALIZATION
 CruiseAutoData = readmatrix("Sp25_cruiseAuto_experimental_data.csv");
+% Vectors to Hold Rough Data
 TimeOg = CruiseAutoData(:,1);
 SpeedCompactOg = CruiseAutoData(:,2);
 
+numX = numel(TimeOg);
+disp(numX);
+count = 0;
+% Vectors to Hold Clean Data
+TimeClean = [];
+SpeedCompactClean = [];
+
+% Opperator to Maintain Equal Vector Lenghts
+VecLength = length(TimeClean);
+
+% Opperator to Designate Number of Elements being Parsed
+numParse = 50;
+
+% Threshold for Standard Deviation
+StdThreshold = 1000;
+
 %% ____________________
 %% CALCULATIONS
-threshold1 = 1.37;
-Idx1 = SpeedCompactOg >= threshold1;
-SpeedCompactOg = SpeedCompactOg(Idx1);
-TimeOg = TimeOg(Idx1);
-Output = Input .* 3;
+for i = 1:numParse: VecLength - numParse + 1
+    idx = i:i + numParse - 1;
+    timeChunk = TimeOG(idx);
+    speedChunk = SpeedCompactOg(idx);
 
+    p = polyfit(timeChunk, speedChunk, 1);
+    speedFit = polyval(p, timeChunk);
+
+    leftovers = abs(speedChunk - speedFit);
+    locStd = std(leftovers);
+    
+    for j = 1:length(timeChunk)
+        if leftovers(j) <= StdThreshold * locStd
+            TimeClean(end + 1) = timeChunk(j);
+            SpeedCompactClean(end + 1) = SpeedCompactClean(j);
+            count = count + 1;
+        end
+    end
+end
+
+isTimeFull = numel(TimeClean);
+isSpeedFull = numel(SpeedCompactClean);
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
 figure;
-scatter(TimeOg, SpeedCompactOg, 'o');
-
+scatter(TimeClean, SpeedCompactClean);
+disp(isSpeedFull);
+disp(isTimeFull);
+disp(count);
 %% ____________________
 %% RESULTS
 fprintf('Data successfully passed to subfunction 2 programmed by Skyler DiMeola.\n')
