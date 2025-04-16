@@ -1,22 +1,22 @@
-replace this text with your function definition line
+function[] = M2_sub3_124_23_thussp(data)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Program Description 
-replace this text with your program description as a comment
-%
+%This function will find the point at which the object begins to accelerate
+%and find the time constant of the model
 % Function Call
-replace this text with a comment that states the function call
+%M2_sub3_124_23_thussp()
 %
 % Input Arguments
-replace this text with a commented list of the input arguments
+% Velocity data
 %
 % Output Arguments
-replace this text with a commented list of the output arguments
+%Marked time of beginning accleration and time constant value
 %
 % Assignment Information
-%   Assignment:     M##, Problem #
-%   Team member:    Name, login@purdue.edu [repeat for each person]
-%   Team ID:        ###-##
+%   Assignment:     M02, Problem 3
+%   Team member:    Patrick Thuss, thussp@purdue.edu 
+%   Team ID:        124-23
 %   Academic Integrity:
 %     [] We worked with one or more peers but our collaboration
 %        maintained academic integrity.
@@ -26,10 +26,17 @@ did you complete the assignment information? delete this line if yes
 
 %% ____________________
 %% INITIALIZATION
-
+speed = data(2,:);
 
 %% ____________________
 %% CALCULATIONS
+index = 0;
+for time = data(1,:)
+    index = index+1;
+    if abs(speed(index)-speed(index-1)) > 1.2
+        TimeAcc = time;
+    end
+end
 
 
 %% ____________________
