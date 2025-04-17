@@ -1,5 +1,5 @@
 
-function[Output] = M1B_sub2_124_23_sdimeola(Input)
+function[TimeClean, SpeedClean] = M1B_sub2_124_23_sdimeola(Input)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run subfunction 3 to find the final and inital speed
@@ -35,22 +35,19 @@ disp(numX);
 count = 0;
 % Vectors to Hold Clean Data
 TimeClean = [];
-SpeedCompactClean = [];
-
-% Opperator to Maintain Equal Vector Lenghts
-VecLength = length(TimeClean);
+SpeedClean = [];
 
 % Opperator to Designate Number of Elements being Parsed
-numParse = 50;
+numParse = 25;
 
 % Threshold for Standard Deviation
-StdThreshold = 1000;
+StdThreshold = 4;
 
 %% ____________________
 %% CALCULATIONS
-for i = 1:numParse: VecLength - numParse + 1
+for i = 1:numParse: (numX - numParse + 1)
     idx = i:i + numParse - 1;
-    timeChunk = TimeOG(idx);
+    timeChunk = TimeOg(idx);
     speedChunk = SpeedCompactOg(idx);
 
     p = polyfit(timeChunk, speedChunk, 1);
@@ -58,22 +55,22 @@ for i = 1:numParse: VecLength - numParse + 1
 
     leftovers = abs(speedChunk - speedFit);
     locStd = std(leftovers);
-    
+    disp(locStd);
     for j = 1:length(timeChunk)
         if leftovers(j) <= StdThreshold * locStd
             TimeClean(end + 1) = timeChunk(j);
-            SpeedCompactClean(end + 1) = SpeedCompactClean(j);
+            SpeedClean(end + 1) = speedChunk(j);
             count = count + 1;
         end
     end
 end
 
 isTimeFull = numel(TimeClean);
-isSpeedFull = numel(SpeedCompactClean);
+isSpeedFull = numel(SpeedClean);
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
 figure;
-scatter(TimeClean, SpeedCompactClean);
+scatter(TimeClean, SpeedClean);
 disp(isSpeedFull);
 disp(isTimeFull);
 disp(count);
