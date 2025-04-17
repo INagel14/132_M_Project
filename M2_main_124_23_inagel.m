@@ -1,10 +1,10 @@
-function[] = M1B_main_124_23_inagel()
+function[] = M2_main_124_23_inagel()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run the skeleton function that runs all the functions
 %
 % Function Call
-% [] = M1B_main_124_23_inagel()
+% [] = M2_main_124_23_inagel()
 %
 % Input Arguments
 % None
@@ -28,7 +28,7 @@ function[] = M1B_main_124_23_inagel()
 testData = readmatrix('Sp25_cruiseAuto_experimental_data.csv','NumHeaderLines',1);
 
 % Pull in ALL the columns for graphical analysis
-Time = testData(:,1);
+time = testData(:,1);
 
 % In the future, could make a variable for all 5 trials, then graph. Use
 % the set function to then set the color for each line of the graph. 
@@ -87,18 +87,35 @@ Speed_SUV_Summer_Test3 = testData(:,44);
 Speed_SUV_Summer_Test4 = testData(:,45);
 Speed_SUV_Summer_Test5 = testData(:,46);
 
+SuperVar = testData(:,2:46);
 
+count = 2;
 %% ____________________
 %% CALCULATIONS
 
 % I love patrick 
 % i love u too isaac 
 
-%Test1 = M1B_sub1_124_23_thussp(Time);
+Test1 = M2_sub1_124_23_sdimeola(Time);
 
-%Test2 = M1B_sub2_124_23_sdimeola(Time);
+Test2 = M2_sub2_124_23_thussp(Time);
 
-%Test3 =  M1B_sub3_124_23_muell147(Time);
+Test3 =  M2_sub3_124_23_muell147(Time);
+
+
+while indx <= 46
+    rawY = testData(:,indx);
+
+    [TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY);
+
+    indx = indx +1;
+
+end
+
+
+
+
+
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
@@ -108,7 +125,7 @@ Speed_SUV_Summer_Test5 = testData(:,46);
 % Compact Winter
 figure;
 subplot(1,3,1);
-x = Time;
+x = time;
 plot(x,Speed_Compact_Winter_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Compact_Winter_Test2,'Color',[0.85 0.325 0.0980]);
@@ -124,7 +141,7 @@ legend('Test 1','Test 2','Test 3','Test 4','Test 5','Location','best');
 
 % Sedan Winter
 subplot(1,3,2);
-x = Time;
+x = time;
 plot(x,Speed_Sedan_Winter_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Sedan_Winter_Test2,'Color',[0.85 0.325 0.0980]);
@@ -138,7 +155,7 @@ ylabel('Velocity (m/s)');
 
 % SUV Winter
 subplot(1,3,3);
-x = Time;
+x = time;
 plot(x,Speed_SUV_Winter_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_SUV_Winter_Test2,'Color',[0.85 0.325 0.0980]);
@@ -157,7 +174,7 @@ ylabel('Velocity (m/s)');
 % Compact All-Season
 figure;
 subplot(1,3,1);
-x = Time;
+x = time;
 plot(x,Speed_Compact_AllSeason_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Compact_AllSeason_Test2,'Color',[0.85 0.325 0.0980]);
@@ -173,7 +190,7 @@ legend('Test 1','Test 2','Test 3','Test 4','Test 5','Location','best');
 
 % Sedan All-Season
 subplot(1,3,2);
-x = Time;
+x = time;
 plot(x,Speed_Sedan_AllSeason_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Sedan_AllSeason_Test2,'Color',[0.85 0.325 0.0980]);
@@ -187,7 +204,7 @@ ylabel('Velocity (m/s)');
 
 % SUV All-Season
 subplot(1,3,3);
-x = Time;
+x = time;
 plot(x,Speed_SUV_AllSeason_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_SUV_AllSeason_Test2,'Color',[0.85 0.325 0.0980]);
@@ -206,7 +223,7 @@ ylabel('Velocity (m/s)');
 % Compact Summer
 figure;
 subplot(1,3,1);
-x = Time;
+x = time;
 plot(x,Speed_Compact_Summer_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Compact_Summer_Test2,'Color',[0.85 0.325 0.0980]);
@@ -222,7 +239,7 @@ legend('Test 1','Test 2','Test 3','Test 4','Test 5','Location','best');
 
 % Sedan Summer
 subplot(1,3,2);
-x = Time;
+x = time;
 plot(x,Speed_Sedan_Summer_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Sedan_Summer_Test2,'Color',[0.85 0.325 0.0980]);
@@ -236,7 +253,7 @@ ylabel('Velocity (m/s)');
 
 % SUV Summer
 subplot(1,3,3);
-x = Time;
+x = time;
 plot(x,Speed_SUV_Summer_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_SUV_Summer_Test2,'Color',[0.85 0.325 0.0980]);
@@ -256,7 +273,7 @@ ylabel('Velocity (m/s)');
 
 figure;
 subplot(3,3,1);
-x = Time;
+x = time;
 plot(x,Speed_Compact_Winter_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Compact_Winter_Test2,'Color',[0.85 0.325 0.0980]);
@@ -273,7 +290,7 @@ legend('Test 1','Test 2','Test 3','Test 4','Test 5','Location','best');
 
 
 subplot(3,3,2);
-x = Time;
+x = time;
 plot(x,Speed_Compact_AllSeason_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Compact_AllSeason_Test2,'Color',[0.85 0.325 0.0980]);
@@ -287,7 +304,7 @@ ylabel('Velocity (m/s)');
 
 
 subplot(3,3,3);
-x = Time;
+x = time;
 plot(x,Speed_Compact_Summer_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Compact_Summer_Test2,'Color',[0.85 0.325 0.0980]);
@@ -304,7 +321,7 @@ ylabel('Velocity (m/s)');
 % -Winter, All, Summer
 
 subplot(3,3,4);
-x = Time;
+x = time;
 plot(x,Speed_Sedan_Winter_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Sedan_Winter_Test2,'Color',[0.85 0.325 0.0980]);
@@ -317,7 +334,7 @@ xlabel('Time (s)');
 ylabel('Velocity (m/s)');
 
 subplot(3,3,5);
-x = Time;
+x = time;
 plot(x,Speed_Sedan_AllSeason_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Sedan_AllSeason_Test2,'Color',[0.85 0.325 0.0980]);
@@ -331,7 +348,7 @@ ylabel('Velocity (m/s)');
 
 
 subplot(3,3,6);
-x = Time;
+x = time;
 plot(x,Speed_Sedan_Summer_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_Sedan_Summer_Test2,'Color',[0.85 0.325 0.0980]);
@@ -348,7 +365,7 @@ ylabel('Velocity (m/s)');
 % -Winter, All, Summer
 
 subplot(3,3,7);
-x = Time;
+x = time;
 plot(x,Speed_SUV_Winter_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_SUV_Winter_Test2,'Color',[0.85 0.325 0.0980]);
@@ -361,7 +378,7 @@ xlabel('Time (s)');
 ylabel('Velocity (m/s)');
 
 subplot(3,3,8);
-x = Time;
+x = time;
 plot(x,Speed_SUV_AllSeason_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_SUV_AllSeason_Test2,'Color',[0.85 0.325 0.0980]);
@@ -375,7 +392,7 @@ ylabel('Velocity (m/s)');
 
 
 subplot(3,3,9);
-x = Time;
+x = time;
 plot(x,Speed_SUV_Summer_Test1,'Color',[0.466 0.6740 0.1880]);
 hold on
 plot(x,Speed_SUV_Summer_Test2,'Color',[0.85 0.325 0.0980]);
