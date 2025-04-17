@@ -1,14 +1,14 @@
-function[TimeAcc,Tau] = M2_sub2_124_23_thussp(data,Vf)
+function[TimeAcc,Tau] = M2_sub2_124_23_thussp(x,y,Vf)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Program Description 
 %This function will find the point at which the object begins to accelerate
 %and find the time constant of the model
 % Function Call
-%M2_sub3_124_23_thussp()
+%M2_sub2_124_23_thussp()
 %
 % Input Arguments
-% Velocity data
+% Velocity data and final velocity
 %
 % Output Arguments
 %Marked time of beginning accleration and time constant value
@@ -26,12 +26,15 @@ did you complete the assignment information? delete this line if yes
 
 %% ____________________
 %% INITIALIZATION
+data(:,1)= x;
+data(:,1)= y;
+
 speed = data(2,:);
 
 %% ____________________
 %% CALCULATIONS
 index = 0;
-for time = data(1,:)
+for time = data(:,1)
     index = index+1;
     if abs(speed(index+1)-speed(index)) > 1.2 %searches the data for a point 
 %where the velocity increases by more than 1.2 since the last point
@@ -39,16 +42,15 @@ for time = data(1,:)
     end
 end
 
-yL = data(2,TimeAcc); %assigns YL aka original velocity at acceleration
+yL = data(TimeAcc,2); %assigns YL aka original velocity at acceleration
 
 %find y of tau
  y_tau = yL + 0.632 * (Vf - yL);
 
  %find the closes y value to that in the data
  [~, apprxYTauIdx] = min(abs(data(2,:) - y_tau));
-
- %find the x value of that and then subtract ts to get tau
-Tau = data(1,apprxYTauIdx) - TimeAcc;
+%find the x value of that and then subtract ts to get tau
+Tau = data(apprxYTauIdx,1) - TimeAcc;
 
 
 %% ____________________
