@@ -1,4 +1,4 @@
-function[TimeAcc,Tau] = M2_sub2_124_23_thussp(data)
+function[TimeAcc,Tau] = M2_sub2_124_23_thussp(data,Vf)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Program Description 
@@ -41,7 +41,14 @@ end
 
 yL = data(2,TimeAcc); %assigns YL aka original velocity at acceleration
 
-Tau = 
+%find y of tau
+ y_tau = yL + 0.632 * (Vf - yL);
+
+ %find the closes y value to that in the data
+ [~, apprxYTauIdx] = min(abs(data(2,:) - y_tau));
+
+ %find the x value of that and then subtract ts to get tau
+Tau = data(1,apprxYTauIdx) - TimeAcc;
 
 
 %% ____________________
