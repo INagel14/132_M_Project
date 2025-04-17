@@ -1,5 +1,5 @@
 
-function[TimeClean, SpeedClean] = M1B_sub2_124_23_sdimeola(Input)
+function[TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run subfunction 3 to find the final and inital speed
@@ -25,10 +25,9 @@ function[TimeClean, SpeedClean] = M1B_sub2_124_23_sdimeola(Input)
 
 %% ____________________
 %% INITIALIZATION
-CruiseAutoData = readmatrix("Sp25_cruiseAuto_experimental_data.csv");
 % Vectors to Hold Rough Data
-TimeOg = CruiseAutoData(:,1);
-SpeedCompactOg = CruiseAutoData(:,2);
+TimeOg = time;
+SpeedCompactOg = rawY;
 
 numX = numel(TimeOg);
 disp(numX);
