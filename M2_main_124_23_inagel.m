@@ -13,7 +13,7 @@ function[] = M2_main_124_23_inagel()
 % None
 %
 % Assignment Information
-%   Assignment:     M1B, Problem 3
+%   Assignment:     M2
 %   Team member:    Isaac Nagel, inagel@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:
@@ -89,7 +89,7 @@ Speed_SUV_Summer_Test5 = testData(:,46);
 
 SuperVar = testData(:,2:46);
 
-count = 2;
+indx = 2;
 %% ____________________
 %% CALCULATIONS
 
