@@ -1,4 +1,4 @@
-function[TimeAcc,yL] = M2_sub2_124_23_thussp(x,y,Vf)
+function[TimeAcc,yL] = M2_sub2_124_23_thussp(x,y)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Program Description 
