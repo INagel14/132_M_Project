@@ -9,7 +9,7 @@ function [Vi, Vf]=  M1B_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 % Input Arguments
 % TimeClean (variable name for Y data that skyler cleaned)
 % SpeedClean (variable name for Y data that skyler cleaned)
-% accel_start (variable name for start time that Patrick found)
+% TimeAcc (variable name for start time that Patrick found)
 %
 % Output Arguments
 % Vf (final velocity I calculated)
