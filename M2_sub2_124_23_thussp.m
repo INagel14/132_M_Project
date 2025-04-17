@@ -5,10 +5,10 @@ function[TimeAcc,Tau] = M2_sub2_124_23_thussp(x,y,Vf)
 %This function will find the point at which the object begins to accelerate
 %and find the time constant of the model
 % Function Call
-%M2_sub3_124_23_thussp()
+%M2_sub2_124_23_thussp()
 %
 % Input Arguments
-% Velocity data
+% Velocity data and final velocity
 %
 % Output Arguments
 %Marked time of beginning accleration and time constant value
