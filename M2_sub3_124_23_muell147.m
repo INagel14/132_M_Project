@@ -1,4 +1,4 @@
-function [Output]=  M1B_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
+function [Output]=  M1B_sub3_124_23_muell147(clean_data, accel_start)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132
 %
@@ -28,11 +28,12 @@ function [Output]=  M1B_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 vixdata= TimeClean(:,1); % x data before acceleration
 viydata= SpeedClean(:, 1:TimeAcc); % y data before acceleration
 
-finaly= SpeedClean(:, accel_start:end); % x/time values of data after acceleration
-finalx= TimeClean(:,2); % y/speed values of data after acceleration
+finaly= SpeedClean(:, TimeAcc:end); % y/speed values of data after acceleration
+finalx= TimeClean(:,1); % x/time values of data after acceleration
 
 slope_threshold= 0.1; % value that makes sure slope is close to 0
 index= 0; %setting index for determing when flatenned curve starts
+
 %% ____________________
 %% CALCULATIONS
 %Output = Input .* 3; %practicing subfunction
@@ -80,3 +81,6 @@ fprintf('Data successfully passed to subfunction 3 programmed by Elizabeth Muell
 % source, either modified or unmodified. Neither have we provided
 % access to my code to another. The program we are submitting
 % is our own original work.
+
+
+
