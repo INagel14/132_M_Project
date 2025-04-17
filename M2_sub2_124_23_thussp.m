@@ -26,16 +26,14 @@ function[TimeAcc,Tau] = M2_sub2_124_23_thussp(x,y,Vf)
 %% ____________________
 %% INITIALIZATION
 data(:,1)= x;
-data(:,1)= y;
-
-speed = data(2,:);
+data(:,2)= y;
 
 %% ____________________
 %% CALCULATIONS
 index = 0;
 for time = data(:,1)
     index = index+1;
-    if abs(speed(index+1)-speed(index)) > 1.2 %searches the data for a point 
+    if abs(y(index+1)-y(index)) > 1.2 %searches the data for a point 
 %where the velocity increases by more than 1.2 since the last point
         TimeAcc = time(index); %TimeAcc is the time of acceleration (T_s)
     end
