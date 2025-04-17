@@ -1,4 +1,4 @@
-function [Vi, Vf]=  M1B_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
+function [Vi, Vf]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132
 %
