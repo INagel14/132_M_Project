@@ -1,13 +1,14 @@
-function [Output]=  M1B_sub3_124_23_muell147(clean_data, accel_start)
+function [Vi, Vf]=  M1B_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132
 %
 % Subfunction 4- finding initial and final velocities, testing function call
 % Function Call
-% [Vf, Vi]=  M1B_sub3_124_23_muell147(clean_data, accel_start)
+% [Vf, Vi]=  M1B_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %
 % Input Arguments
-% clean_data (variable name for data that skyler cleaned)
+% TimeClean (variable name for Y data that skyler cleaned)
+% SpeedClean (variable name for Y data that skyler cleaned)
 % accel_start (variable name for start time that Patrick found)
 %
 % Output Arguments
