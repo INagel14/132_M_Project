@@ -25,25 +25,24 @@ function [Output]=  M1B_sub3_124_23_muell147(clean_data, accel_start)
 
 %% ____________________
 %% INITIALIZATION
-mydata= clean_data(:, 1:accel_start) % beginning data before acceleration
-vixdata= mydata(:,1); % x data before acceleration
-viydata= mydata(:,2); % y data before acceleration
+vixdata= TimeClean(:,1); % x data before acceleration
+viydata= SpeedClean(:, 1:TimeAcc); % y data before acceleration
 
-finaldata= clean_data(:, accel_start:end) % data after acceleration
-finaly= finaldata(:,1); % x/time values of data after acceleration
-finalx= finaldata(:,2); % y/speed values of data after acceleration
+finaly= SpeedClean(:, TimeAcc:end); % y/speed values of data after acceleration
+finalx= TimeClean(:,1); % x/time values of data after acceleration
 
 slope_threshold= 0.1; % value that makes sure slope is close to 0
 index= 0; %setting index for determing when flatenned curve starts
+
 %% ____________________
 %% CALCULATIONS
-Output = Input .* 3; %practicing subfunction
+%Output = Input .* 3; %practicing subfunction
 
 %finding linear model of start to acceleration time
-linstart= polyfit(xdata, ydata, 1); 
-Vimodel= linstart(1)* xdata+ linstart(2);
+linstart= polyfit(vixdata, viydata, 1); 
+Vimodel= linstart(1)* vixdata+ linstart(2);
 
-lastx= xdata(end); %finding last x value if needed for reference or graphing
+lastx= vixdata(end); %finding last x value if needed for reference or graphing
 lasty= polyval(linstart, lastx); %finding last y value according to regression
 firsty= linstart(2); %first y value is y intercept-- velocity can't be negative
 firstx= 0; %first x value is at intercept
@@ -52,13 +51,13 @@ Vi= mean([lasty, firsty]); % averaging final and intial y values to find initial
 
 %finding start of flattened curve after acceleration part of curve
 change_line= abs(finaly(2:end)-finaly(1:end-1)); %finding the difference between side by side points
-flat_indices= [] % empty vector to store indice(s) where slope flattens
+flat_indices= []; % empty vector to store indice(s) where slope flattens
 
 %finding when curve flattens
 for y= 1:length(change_line) 
     if change_line(y) < slope_threshold && index == 0
-        flat_indices = [flat_indices, y]
-        index= 1
+        flat_indices = [flat_indices, y];
+        index= 1;
     end
 end
 
