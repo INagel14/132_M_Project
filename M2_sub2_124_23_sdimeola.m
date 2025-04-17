@@ -41,7 +41,7 @@ SpeedClean = [];
 numParse = 25;
 
 % Threshold for Standard Deviation
-StdThreshold = 4;
+StdThreshold = 1;
 
 %% ____________________
 %% CALCULATIONS
