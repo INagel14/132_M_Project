@@ -21,7 +21,6 @@ function[TimeAcc,Tau] = M2_sub2_124_23_thussp(x,y,Vf)
 %     [] We worked with one or more peers but our collaboration
 %        maintained academic integrity.
 %     Peers we worked with: Name, login@purdue [repeat for each]
-did you complete the assignment information? delete this line if yes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% ____________________
