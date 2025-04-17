@@ -1,5 +1,5 @@
 
-unction[Output] = M1B_sub2_124_23_sdimeola(Input)
+function[TimeClean, SpeedClean] = M1B_sub2_124_23_sdimeola(Input)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run subfunction 3 to find the final and inital speed
@@ -26,26 +26,58 @@ unction[Output] = M1B_sub2_124_23_sdimeola(Input)
 %% ____________________
 %% INITIALIZATION
 CruiseAutoData = readmatrix("Sp25_cruiseAuto_experimental_data.csv");
+% Vectors to Hold Rough Data
 TimeOg = CruiseAutoData(:,1);
 SpeedCompactOg = CruiseAutoData(:,2);
 
+numX = numel(TimeOg);
+disp(numX);
+count = 0;
+% Vectors to Hold Clean Data
+TimeClean = [];
+SpeedClean = [];
+
+% Opperator to Designate Number of Elements being Parsed
+numParse = 25;
+
+% Threshold for Standard Deviation
+StdThreshold = 4;
+
 %% ____________________
 %% CALCULATIONS
-threshold1 = 1.37;
-Idx1 = SpeedCompactOg >= threshold1;
-SpeedCompactOg = SpeedCompactOg(Idx1);
-TimeOg = TimeOg(Idx1);
-Output = Input .* 3;
+for i = 1:numParse: (numX - numParse + 1)
+    idx = i:i + numParse - 1;
+    timeChunk = TimeOg(idx);
+    speedChunk = SpeedCompactOg(idx);
 
+    p = polyfit(timeChunk, speedChunk, 1);
+    speedFit = polyval(p, timeChunk);
+
+    leftovers = abs(speedChunk - speedFit);
+    locStd = std(leftovers);
+    disp(locStd);
+    for j = 1:length(timeChunk)
+        if leftovers(j) <= StdThreshold * locStd
+            TimeClean(end + 1) = timeChunk(j);
+            SpeedClean(end + 1) = speedChunk(j);
+            count = count + 1;
+        end
+    end
+end
+
+isTimeFull = numel(TimeClean);
+isSpeedFull = numel(SpeedClean);
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
 figure;
-scatter(TimeOg, SpeedCompactOg, 'o');
-
+scatter(TimeClean, SpeedClean);
+disp(isSpeedFull);
+disp(isTimeFull);
+disp(count);
 %% ____________________
 %% RESULTS
 fprintf('Data successfully passed to subfunction 2 programmed by Skyler DiMeola.\n')
-
+end
 %% ____________________
 %% ACADEMIC INTEGRITY STATEMENT
 % We have not used source code obtained from any other unauthorized
