@@ -37,7 +37,7 @@ TimeClean = [];
 SpeedClean = [];
 
 % Opperator to Designate Number of Elements being Parsed
-numParse = 20;
+numParse = 25;
 
 % Threshold for Standard Deviation
 StdThreshold = 1;
