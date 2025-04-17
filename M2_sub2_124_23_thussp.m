@@ -39,7 +39,7 @@ for time = data(:,1)
     end
 end
 
-yL = data(TimeAcc,2); %assigns YL aka original velocity at acceleration
+yL = data(index,2); %assigns YL aka original velocity at acceleration
 
 %find y of tau
  y_tau = yL + 0.632 * (Vf - yL);
