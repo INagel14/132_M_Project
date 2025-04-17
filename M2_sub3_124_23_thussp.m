@@ -1,4 +1,4 @@
-function[] = M2_sub3_124_23_thussp(data)
+function[TimeAcc,Tau] = M2_sub2_124_23_thussp(data)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Program Description 
@@ -33,10 +33,15 @@ speed = data(2,:);
 index = 0;
 for time = data(1,:)
     index = index+1;
-    if abs(speed(index)-speed(index-1)) > 1.2
-        TimeAcc = time;
+    if abs(speed(index+1)-speed(index)) > 1.2 %searches the data for a point 
+%where the velocity increases by more than 1.2 since the last point
+        TimeAcc = time(index); %TimeAcc is the time of acceleration (T_s)
     end
 end
+
+yL = data(2,TimeAcc); %assigns YL aka original velocity at acceleration
+
+Tau = 
 
 
 %% ____________________
