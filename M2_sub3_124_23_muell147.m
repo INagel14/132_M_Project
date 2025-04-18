@@ -29,6 +29,7 @@ function [Vi, Vf]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 
 
 
+
 cleanMean = movmean(SpeedClean,40);
 
 vixdata= TimeClean(:,1:round(TimeAcc)); % x data before acceleration
