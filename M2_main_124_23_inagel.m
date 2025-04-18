@@ -112,13 +112,13 @@ while indx <= 2
 
     [TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY);
 
-    [TimeAcc, yL] = M2_sub2_124_23_thussp(TimeClean, SpeedClean);
+    %[TimeAcc, yL] = M2_sub2_124_23_thussp(TimeClean, SpeedClean);
     fprintf('TimeAcc: %0.2f\n',TimeAcc);
 
    
-   [Vi, Vf] = M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
+  % [Vi, Vf] = M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
 
-   [Tau] = M2_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
+  % [Tau] = M2_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
 
     indx = indx +1;
 
