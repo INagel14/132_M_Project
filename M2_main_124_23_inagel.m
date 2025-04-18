@@ -27,6 +27,7 @@ function[] = M2_main_124_23_inagel()
 % Pull all data from the spreadsheet
 testData = readmatrix('Sp25_cruiseAuto_experimental_data.csv','NumHeaderLines',1);
 
+
 % Pull in ALL the columns for graphical analysis
 time = testData(:,1);
 
