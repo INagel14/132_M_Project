@@ -22,9 +22,7 @@ function[] = M2_main_124_23_inagel()
 
 
 
-% My function is not very good because I spent a lot of my time debugging 
-% my groupmates functions. I apologize. Hopefully this is satisfactory,
-% and I will do better in the future
+% 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
