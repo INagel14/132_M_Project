@@ -105,7 +105,7 @@ indx = 2;
 
 
 
-while indx <= 3
+while indx <= 2
     rawY = testData(:,indx);
 
     [TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY);
@@ -116,7 +116,7 @@ while indx <= 3
    
    [Vi, Vf] = M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
 
-  % [Tau] = M2_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL);
+    [Tau] = M2_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
 
     indx = indx +1;
 
