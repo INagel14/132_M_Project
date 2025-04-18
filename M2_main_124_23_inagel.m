@@ -116,7 +116,7 @@ while indx <= 2
    
    [Vi, Vf] = M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
 
-    [Tau] = M2_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
+   % [Tau] = M2_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
 
     indx = indx +1;
 
