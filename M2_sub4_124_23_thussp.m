@@ -1,4 +1,4 @@
-function[Tau] = M2_sub4_124_23_thussp(x,y,Vf,yL)
+function[Tau] = M2_sub4_124_23_thussp(x,y,Vf,yL, TimeAcc)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Program Description 
@@ -28,16 +28,29 @@ function[Tau] = M2_sub4_124_23_thussp(x,y,Vf,yL)
 data(:,1)= x;
 data(:,2)= y;
 
+var = 0;
+indx = 1;
+tolerance = 0.25;
+
 %% ____________________
 %% CALCULATIONS
 %find y of tau
  y_tau = yL + 0.632 * (Vf - yL);
 
- %find the closes y value to that in the data
- [~, apprxYTauIdx] = min(abs(data(2,:) - y_tau));
-%find the x value of that and then subtract ts to get tau
-Tau = data(apprxYTauIdx,1) - TimeAcc;
+while(var == 0)
 
+    if y_tau <= (y(indx) + tolerance) && y_tau >= (y(indx) - tolerance)
+        Tau = x(indx) - TimeAcc;
+        var = 1;
+    end
+    indx = indx +1;
+end
+
+%  %find the closes y value to that in the data
+%  [~, apprxYTauIdx] = min(abs(data(2,:) - y_tau));
+% %find the x value of that and then subtract ts to get tau
+% Tau = data(apprxYTauIdx,1) - TimeAcc;
+fprintf('Tau equals: %0.2f\n',Tau);
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
