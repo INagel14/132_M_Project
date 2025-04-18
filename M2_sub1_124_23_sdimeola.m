@@ -1,7 +1,7 @@
 
 function[TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ENGR 132 
+% ENGR 132
 % Run subfunction 2 to clean the data.
 %
 % Function Call
@@ -10,7 +10,7 @@ function[TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY)
 % Input Arguments:
 % time: uncleaned time data from imported csv.
 % rawY: uncleaned speed data from imported csv.
-% 
+%
 % Output Arguments:
 % TimeClean: Array of cleaned time data points
 % SpeedClean: Array of cleaned speed data points
@@ -22,7 +22,7 @@ function[TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY)
 %   Academic Integrity:
 %     [N/A] We worked with one or more peers but our collaboration
 %        maintained academic integrity.
-%     
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% ____________________
@@ -49,17 +49,24 @@ for i = 1:numParse: (numX - numParse + 1)
     timeChunk = TimeOg(idx);
     speedChunk = SpeedCompactOg(idx);
 
-    p = polyfit(timeChunk, speedChunk, 1);
-    speedFit = polyval(p, timeChunk);
+    validIdx = speedChunk >= 0;
+    timeChunk = timeChunk(validIdx);
+    speedChunk = speedChunk(validIdx);
 
-    leftovers = abs(speedChunk - speedFit);
-    locStd = std(leftovers);
-    %disp(locStd);
-    for j = 1:length(timeChunk)
-        if leftovers(j) <= StdThreshold * locStd
-            TimeClean(end + 1) = timeChunk(j);
-            SpeedClean(end + 1) = speedChunk(j);
-            count = count + 1;
+    if length(speedChunk) >= 2
+        p = polyfit(timeChunk, speedChunk, 1);
+        speedFit = polyval(p, timeChunk);
+
+        leftovers = abd(speedChunk - speedFit);
+        locStd = std(leftovers);
+
+        %disp(locStd);
+        for j = 1:length(timeChunk)
+            if leftovers(j) <= StdThreshold * locStd
+                TimeClean(end + 1) = timeChunk(j);
+                SpeedClean(end + 1) = speedChunk(j);
+                count = count + 1;
+            end
         end
     end
 end
