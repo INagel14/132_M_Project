@@ -19,6 +19,10 @@ function[] = M2_main_124_23_inagel()
 %   Academic Integrity:
 %     [N/A] We worked with one or more peers but our collaboration
 %        maintained academic integrity.
+
+
+
+% 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -93,9 +97,6 @@ SuperVar = testData(:,2:46);
 indx = 2;
 %% ____________________
 %% CALCULATIONS
-
-% I love patrick 
-% i love u too isaac 
 
 %Test1 = M2_sub1_124_23_sdimeola(Time);
 
