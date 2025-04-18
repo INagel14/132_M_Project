@@ -27,9 +27,12 @@ function [Vi, Vf]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %% ____________________
 %% INITIALIZATION
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> f23e3c1b5f32c12de1373af8689b56971a85c7b0
 cleanMean = movmean(SpeedClean,40);
 
 vixdata= TimeClean(:,1:round(TimeAcc)); % x data before acceleration
@@ -54,8 +57,24 @@ lasty= polyval(linstart, lastx); %finding last y value according to regression
 firsty= linstart(2); %first y value is y intercept-- velocity can't be negative
 firstx= 0; %first x value is at intercept
 
+for y= 1:length(change_line) 
+     if change_line(y) < slope_threshold && index == 0
+         flat_indices = [flat_indices, y];
+         index= 1;
+     end
+end
+
+Vfstart_index = flat_indices(1) + 1; %identifying start point of data
+Vfdata = cleanMean(Vfstart_index:end); % creating vector of data for final velocity
+
+
 Vi= mean([lasty, firsty]); % averaging final and intial y values to find initial velocity
+<<<<<<< HEAD
 Vf = mean(finaly);
+=======
+Vf= mean(Vfdata);
+
+>>>>>>> f23e3c1b5f32c12de1373af8689b56971a85c7b0
 % %finding start of flattened curve after acceleration part of curve
 % change_line= abs(finaly(2:end)-finaly(1:end-1)); %finding the difference between side by side points
 % flat_indices= []; % empty vector to store indice(s) where slope flattens
