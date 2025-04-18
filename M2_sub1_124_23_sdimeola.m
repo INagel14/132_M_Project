@@ -57,10 +57,10 @@ for i = 1:numParse: (numX - numParse + 1)
         p = polyfit(timeChunk, speedChunk, 1);
         speedFit = polyval(p, timeChunk);
 
-        leftovers = abd(speedChunk - speedFit);
+        leftovers = abs(speedChunk - speedFit);
         locStd = std(leftovers);
 
-        %disp(locStd);
+        %disp(locStd)s
         for j = 1:length(timeChunk)
             if leftovers(j) <= StdThreshold * locStd
                 TimeClean(end + 1) = timeChunk(j);
