@@ -25,21 +25,21 @@ function[TimeAcc,yL] = M2_sub2_124_23_thussp(x,y)
 
 %% ____________________
 %% INITIALIZATION
-data(:,1)= x;
-data(:,2)= y;
+data = [x, y];
+
+TimeAcc = NaN;
+yL = NaN;
 
 %% ____________________
 %% CALCULATIONS
-index = 0;
-for time = data(:,1)
-    index = index+1;
-    if abs(y(index+1)-y(index)) > 1.2 %searches the data for a point 
-%where the velocity increases by more than 1.2 since the last point
-        TimeAcc = time(index); %TimeAcc is the time of acceleration (T_s)
+for index = 1:length(x)-1
+    if ~found && abs(y(index+1) - y(index)) > 1.2
+        TimeAcc = x(index+1);
+        yL = y(index+1);
+        found = true;  % mark found point
     end
 end
 
-yL = data(index,2); %assigns YL aka original velocity at acceleration
 
 
 
