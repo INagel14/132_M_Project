@@ -27,7 +27,7 @@ function [Vi, Vf]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %% ____________________
 %% INITIALIZATION
 
-Vf = max(SpeedClean(:));
+
 
 cleanMean = movmean(SpeedClean,40);
 
@@ -54,7 +54,7 @@ firsty= linstart(2); %first y value is y intercept-- velocity can't be negative
 firstx= 0; %first x value is at intercept
 
 Vi= mean([lasty, firsty]); % averaging final and intial y values to find initial velocity
-
+Vf = mean(finaly);
 % %finding start of flattened curve after acceleration part of curve
 % change_line= abs(finaly(2:end)-finaly(1:end-1)); %finding the difference between side by side points
 % flat_indices= []; % empty vector to store indice(s) where slope flattens
