@@ -54,7 +54,7 @@ for i = 1:numParse: (numX - numParse + 1)
 
     leftovers = abs(speedChunk - speedFit);
     locStd = std(leftovers);
-    disp(locStd);
+    %disp(locStd);
     for j = 1:length(timeChunk)
         if leftovers(j) <= StdThreshold * locStd
             TimeClean(end + 1) = timeChunk(j);
@@ -70,9 +70,9 @@ isSpeedFull = numel(SpeedClean);
 %% FORMATTED TEXT/FIGURE DISPLAYS
 figure;
 scatter(TimeClean, SpeedClean);
-disp(isSpeedFull);
-disp(isTimeFull);
-disp(count);
+%disp(isSpeedFull);
+%disp(isTimeFull);
+%disp(count);
 %% ____________________
 %% RESULTS
 fprintf('Data successfully passed to subfunction 2 programmed by Skyler DiMeola.\n')
