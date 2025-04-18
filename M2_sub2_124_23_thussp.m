@@ -29,17 +29,29 @@ data = [x, y];
 found = false;
 TimeAcc = NaN;
 yL = NaN;
-
+indx = 1;
 %% ____________________
 %% CALCULATIONS
-for index = 1:length(x)-1
-    if ~found && abs(y(index+1) - y(index)) > 1.2
-        TimeAcc = x(index+1);
-        yL = y(index+1);
-        found = true;  % mark found point
-    end
+
+cleanMean = movmean(y,40);
+%figure;
+%plot(x,cleanMean,'-r');
+
+while (cleanMean(indx) <= 0.5)
+    TimeAcc = x(indx);
+    yL = y(indx);
+    indx = indx + 1;
+
 end
 
+
+% for index = 1:length(x)-1
+%     if ~found && abs(cleanMean(index+1) - cleanMean(index)) > 1.1
+%         TimeAcc = x(index+1);
+%         yL = cleanMean(index+1);
+%         found = true;  % mark found point
+%     end
+% end
 
 
 
