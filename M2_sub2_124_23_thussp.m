@@ -34,8 +34,8 @@ indx = 1;
 %% CALCULATIONS
 
 cleanMean = movmean(y,40);
-%figure;
-%plot(x,cleanMean,'-r');
+figure;
+plot(x,cleanMean,'-r');
 
 while (cleanMean(indx) <= 0.5)
     TimeAcc = x(indx);
