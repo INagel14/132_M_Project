@@ -49,7 +49,7 @@ for i = 1:numParse: (numX - numParse + 1)
     timeChunk = TimeOg(idx);
     speedChunk = SpeedCompactOg(idx);
 
-    validIdx = speedCHunk >= 0;
+    validIdx = speedChunk >= 0;
     timeChunk = timeChunk(validIdx);
     speedChunk = speedChunk(validIdx);
 
