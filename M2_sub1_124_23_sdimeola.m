@@ -5,7 +5,7 @@ function[TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY)
 % Run subfunction 3 to find the final and inital speed
 %
 % Function Call
-% [Output] = M1B_sub2_124_23_sdimeola(Input)
+% [Output] = M2_sub2_124_23_sdimeola(Input)
 %
 % Input Arguments
 % Input
@@ -14,7 +14,7 @@ function[TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY)
 % Output
 %
 % Assignment Information
-%   Assignment:     M1B, Problem xx
+%   Assignment:     M2
 %   Team member:    Skyler DiMeola, sdimeola@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:
