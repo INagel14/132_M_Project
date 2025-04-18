@@ -2,16 +2,18 @@
 function[TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
-% Run subfunction 3 to find the final and inital speed
+% Run subfunction 2 to clean the data.
 %
 % Function Call
-% [Output] = M2_sub2_124_23_sdimeola(Input)
+% [TimeClean, SpeedClean] = M2_sub2_124_23_sdimeola(time, rawY)
 %
-% Input Arguments
-% Input
-%
-% Output Arguments
-% Output
+% Input Arguments:
+% time: uncleaned time data from imported csv.
+% rawY: uncleaned speed data from imported csv.
+% 
+% Output Arguments:
+% TimeClean: Array of cleaned time data points
+% SpeedClean: Array of cleaned speed data points
 %
 % Assignment Information
 %   Assignment:     M2
@@ -25,25 +27,23 @@ function[TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY)
 
 %% ____________________
 %% INITIALIZATION
-% Vectors to Hold Rough Data
-TimeOg = time;
-SpeedCompactOg = rawY;
+TimeOg = time; % vector to hold function input for time
+SpeedCompactOg = rawY; % vector to hold function input for speed
 
-numX = numel(TimeOg);
-disp(numX);
-count = 0;
-% Vectors to Hold Clean Data
-TimeClean = [];
-SpeedClean = [];
+TimeClean = []; % empty vector to hold cleaned time data
+SpeedClean = []; % empty vector to hold cleaned speed data
 
-% Opperator to Designate Number of Elements being Parsed
-numParse = 20;
-
-% Threshold for Standard Deviation
-StdThreshold = 1;
+numX = numel(TimeOg); % variable to hold size of original data set
+disp(numX); % Debug code
+count = 0; % counter for loop iteration
+numParse = 20; % Opperator to Designate Number of Elements being looked at
+StdThreshold = 1; % Threshold for Standard Deviation
 
 %% ____________________
 %% CALCULATIONS
+% For loop that iterates through 20 data points at time and takes a linear
+% regression of those data points, removng any that fall outside the
+% standard deviation.
 for i = 1:numParse: (numX - numParse + 1)
     idx = i:i + numParse - 1;
     timeChunk = TimeOg(idx);
@@ -64,12 +64,16 @@ for i = 1:numParse: (numX - numParse + 1)
     end
 end
 
-isTimeFull = numel(TimeClean);
-isSpeedFull = numel(SpeedClean);
+isTimeFull = numel(TimeClean); % Debug: Verify if loop is working
+isSpeedFull = numel(SpeedClean); % Debug: Verify if loop is working
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
 figure;
 scatter(TimeClean, SpeedClean);
+title('Cleaned Time Data vs. Cleaned Speed Data')
+xlabel('Cleaned Time Data')
+ylabel('Cleaned Speed Data')
+
 figure;
 plot(TimeClean,SpeedClean,'-g');
 %disp(isSpeedFull);
