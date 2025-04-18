@@ -26,7 +26,7 @@ function[TimeAcc,yL] = M2_sub2_124_23_thussp(x,y)
 %% ____________________
 %% INITIALIZATION
 data = [x, y];
-
+found = false;
 TimeAcc = NaN;
 yL = NaN;
 
