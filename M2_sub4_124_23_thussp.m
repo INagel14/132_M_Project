@@ -1,11 +1,11 @@
-function[Tau] = M2_sub5_124_23_thussp(x,y,Vf,yL)
+function[Tau] = M2_sub4_124_23_thussp(x,y,Vf,yL)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Program Description 
 %This function will find the point at which the object begins to accelerate
 %and find the time constant of the model
 % Function Call
-%M2_sub2_124_23_thussp()
+%M2_sub4_124_23_thussp()
 %
 % Input Arguments
 % Velocity data and final velocity
