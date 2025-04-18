@@ -50,6 +50,8 @@ lasty= polyval(linstart, lastx); %finding last y value according to regression
 firsty= linstart(2); %first y value is y intercept-- velocity can't be negative
 firstx= 0; %first x value is at intercept
 
+change_line= abs(SpeedClean(2:end)-SpeedClean(1:end-1)); %finding the difference between side by side points
+
 for y= 1:length(change_line) 
      if change_line(y) < slope_threshold && index == 0
          flat_indices = [flat_indices, y];
