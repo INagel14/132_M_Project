@@ -26,13 +26,6 @@ function [Vi, Vf]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 
 %% ____________________
 %% INITIALIZATION
-
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> f23e3c1b5f32c12de1373af8689b56971a85c7b0
 cleanMean = movmean(SpeedClean,40);
 
 vixdata= TimeClean(:,1:round(TimeAcc)); % x data before acceleration
@@ -69,12 +62,9 @@ Vfdata = cleanMean(Vfstart_index:end); % creating vector of data for final veloc
 
 
 Vi= mean([lasty, firsty]); % averaging final and intial y values to find initial velocity
-<<<<<<< HEAD
-Vf = mean(finaly);
-=======
 Vf= mean(Vfdata);
 
->>>>>>> f23e3c1b5f32c12de1373af8689b56971a85c7b0
+
 % %finding start of flattened curve after acceleration part of curve
 % change_line= abs(finaly(2:end)-finaly(1:end-1)); %finding the difference between side by side points
 % flat_indices= []; % empty vector to store indice(s) where slope flattens
