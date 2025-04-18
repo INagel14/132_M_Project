@@ -110,11 +110,11 @@ while indx <= 46
 
     [TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY);
 
-   [TimeAcc, yL] = M2_sub2_124_23_thussp(TimeClean, SpeedClean);
+  % [TimeAcc, yL] = M2_sub2_124_23_thussp(TimeClean, SpeedClean);
 
-   [Vi, Vf] = M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
+   %[Vi, Vf] = M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
 
-   [Tau] = M2_sub5_124_23_thussp(TimeClean, SpeedClean, Vf, yL);
+  % [Tau] = M2_sub5_124_23_thussp(TimeClean, SpeedClean, Vf, yL);
 
     indx = indx +1;
 
