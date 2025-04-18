@@ -70,6 +70,8 @@ isSpeedFull = numel(SpeedClean);
 %% FORMATTED TEXT/FIGURE DISPLAYS
 figure;
 scatter(TimeClean, SpeedClean);
+figure;
+plot(TimeClean,SpeedClean,'-g');
 %disp(isSpeedFull);
 %disp(isTimeFull);
 %disp(count);
