@@ -33,10 +33,6 @@ indx = 1;
 %% ____________________
 %% CALCULATIONS
 
-cleanMean = movmean(y,40); %creates mean average graph go
-figure;
-plot(x,cleanMean,'-r'); % plot graph of mean
-
 while (cleanMean(indx) <= 0.5) %index clean mean to find time acc
 %finds it using threshold method of differece between points
     TimeAcc = x(indx);
