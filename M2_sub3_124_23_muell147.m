@@ -74,29 +74,7 @@ Vf = mean(finalvelocityVals);
 
 
 % Find Vi
-timeLength2 = length(vixdata);
-slope2 = zeros(1, timeLength2-2);
-
-for idx = 3:timeLength2
-    % Find Y2 - Y1d
-    changeY2 = viydata(idx) - viydata(idx-2);
-
-    % Find X2 - X1
-    changeX2 = vixdata(idx) - vixdata(idx-2);
-
-    slope2(idx-2) = changeY2/changeX2; 
-
-end
-
-% Find the index for the final velocity
-veloFinalIndex2 = find(slope2 > slope_threshold, 1);
-
-% Go back one index to determine the actual spot
-avgInitialStart = veloFinalIndex2 + 2;
-
-initialVelocityVals = viydata(avgInitialStart:end);
-
-Vi = mean(initialVelocityVals);
+Vi = mean(viydata);
 
 
 
