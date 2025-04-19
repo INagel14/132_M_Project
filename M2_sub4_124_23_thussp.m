@@ -29,28 +29,42 @@ data(:,1)= x;
 data(:,2)= y;
 
 var = 0; %boolean variable marked as false
-indx = 1; %initial index
 tolerance = 0.25; %tolerance for velocity change
 
 %% ____________________
 %% CALCULATIONS
+
+% Calculate 63.2% of the final velocity
+
+targetVal = 0.632*Vf;
+
+indx = find(y >= targetVal, 1);
+
+Tau = x(indx)-TimeAcc;
+
+
+
+
+
+
+
 %find y of tau
- y_tau = yL + 0.632 * (Vf - yL); 
-
-while(var == 0) %while boolean variable is false
-
-    if y_tau <= (y(indx) + tolerance) && y_tau >= (y(indx) - tolerance)
-        Tau = x(indx) - TimeAcc;
-        var = 1; %marks variable as true if the selected y val is greater
-%than y_tau
-    end
-    indx = indx +1; %index if untrue
-end
-
-%  %find the closes y value to that in the data
-%  [~, apprxYTauIdx] = min(abs(data(2,:) - y_tau));
-% %find the x value of that and then subtract ts to get tau
-% Tau = data(apprxYTauIdx,1) - TimeAcc;
+%  y_tau = yL + 0.632 * (Vf - yL); 
+% 
+% while(var == 0) %while boolean variable is false
+% 
+%     if y_tau <= (y(indx) + tolerance) && y_tau >= (y(indx) - tolerance)
+%         Tau = x(indx) - TimeAcc;
+%         var = 1; %marks variable as true if the selected y val is greater
+% %than y_tau
+%     end
+%     indx = indx +1; %index if untrue
+% end
+% 
+% %  %find the closes y value to that in the data
+% %  [~, apprxYTauIdx] = min(abs(data(2,:) - y_tau));
+% % %find the x value of that and then subtract ts to get tau
+% % Tau = data(apprxYTauIdx,1) - TimeAcc;
 fprintf('Tau equals: %0.2f\n',Tau);
 
 %% ____________________
