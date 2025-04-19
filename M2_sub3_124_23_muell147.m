@@ -45,7 +45,7 @@ index= 0; %setting index for determing when flatenned curve starts
 %Output = Input .* 3; %practicing subfunction
 
 timeLength = length(finalx); % makes vector for all time values
-slope = zeros(1, timeLength-4); % makes a vector to iterate through slope in function
+slope = zeros(1, timeLength-4); % makes a vector to iterate through slope in function over multiple data points
 % Find Vf
 
 for idx = 5:timeLength
