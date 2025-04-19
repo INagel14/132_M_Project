@@ -30,16 +30,38 @@ found = false;
 TimeAcc = NaN;
 yL = NaN;
 indx = 1;
+
+slope_threshold = 0.2;
+
+Window = 60;
 %% ____________________
 %% CALCULATIONS
 
-while (y(indx) <= 0.5) %index clean mean to find time acc
-%finds it using threshold method of differece between points
-    TimeAcc = x(indx);
-    yL = y(indx);
-    indx = indx + 1;
+timeLength = length(y); % makes vector for all time values
+slope = zeros(1, timeLength-Window); % makes a vector to iterate through slope in function
+% Find Vf
+
+for idx = (Window+1):timeLength
+    % Find Y2 - Y1d
+    changeY = y(idx) - y(idx-Window);
+
+    % Find X2 - X1
+    changeX = x(idx) - x(idx-Window);
+
+    slope(idx-Window) = changeY/changeX;
 
 end
+
+% Find the index for the final velocity
+Index = find(slope > slope_threshold, 1);
+
+% Go back one index to determine the actual spot
+TimeAcc_index = Index + Window-1;
+
+TimeAcc = x(TimeAcc_index);
+
+yL = y(TimeAcc_index);
+
 
 
 %% ____________________
