@@ -33,12 +33,13 @@ cleanMean = movmean(SpeedClean,40); %cleaning y values
 vixdata= TimeClean(:,1:round(TimeAcc)); % x data before acceleration
 viydata= SpeedClean(:, 1:round(TimeAcc)); % y data before acceleration
 
-finaly= SpeedClean(:, round(TimeAcc):end); % y/speed values of data after acceleration
+finaly= SpeedClean(:,round(TimeAcc):end); % y/speed values of data after acceleration
 finalx= TimeClean(:,round(TimeAcc):end); % x/time values of data after acceleration
 
-slope_threshold= 0.01; % value that makes sure slope is close to 0
+slope_threshold = 0.001; % value that makes sure slope is close to 0
 index= 0; %setting index for determing when flatenned curve starts
 
+Window = 300;
 
 %% ____________________
 %% CALCULATIONS
@@ -48,14 +49,14 @@ timeLength = length(finalx); % makes vector for all time values
 slope = zeros(1, timeLength-4); % makes a vector to iterate through slope in function
 % Find Vf
 
-for idx = 5:timeLength
+for idx = (Window+1):timeLength
     % Find Y2 - Y1d
-    changeY = finaly(idx) - finaly(idx-4);
+    changeY = finaly(idx) - finaly(idx-Window);
 
     % Find X2 - X1
-    changeX = finalx(idx) - finalx(idx-4);
+    changeX = finalx(idx) - finalx(idx-Window);
 
-    slope(idx-4) = changeY/changeX;
+    slope(idx-Window) = changeY/changeX;
 
 end
 
@@ -63,13 +64,11 @@ end
 veloFinalIndex = find(slope < slope_threshold, 1);
 
 % Go back one index to determine the actual spot
-avgFinalStart = veloFinalIndex + 4;
+avgFinalStart = veloFinalIndex + Window;
 
 finalvelocityVals = finaly(avgFinalStart:end);
 
 Vf = mean(finalvelocityVals);
-
-
 
 
 % Find Vi
