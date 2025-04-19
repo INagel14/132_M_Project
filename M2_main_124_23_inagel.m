@@ -112,13 +112,13 @@ while indx <= 2
 
     [TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY);
 
-    %[TimeAcc, yL] = M2_sub2_124_23_thussp(TimeClean, SpeedClean);
+    [TimeAcc, yL] = M2_sub2_124_23_thussp(TimeClean, SpeedClean);
     fprintf('TimeAcc: %0.2f\n',TimeAcc);
 
    
-  % [Vi, Vf] = M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
+  [Vi, Vf] = M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
 
-  % [Tau] = M2_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
+  [Tau] = M2_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
 
     indx = indx +1;
 
@@ -132,23 +132,23 @@ end
 % Attempt at M0 code to graph vs the bounds
 
 % Need to define variables but I haven't yet
-y_left = zeros(1,30);
-for i = t
-    if i >= 0 && i <= t_s_left
-        y_left(i+1) = y_L_left;
-    else 
-        y_left(i+1) = y_L_left + (1 - exp((-1).*((i-t_s_left)./(tau_l)))).*(y_h_left - y_L_left);
-    end 
-end
-
-y_right = zeros(1,30);
-for i = t
-    if i >= 0 && i <= t_s_right
-        y_right(i+1) = y_L_right;
-    else 
-        y_right(i+1) = y_L_right + (1 - exp((-1).*((i-t_s_right)./(tau_r)))).*(y_h_right - y_L_right);
-    end 
-end
+% y_left = zeros(1,30);
+% for i = t
+%     if i >= 0 && i <= t_s_left
+%         y_left(i+1) = y_L_left;
+%     else 
+%         y_left(i+1) = y_L_left + (1 - exp((-1).*((i-t_s_left)./(tau_l)))).*(y_h_left - y_L_left);
+%     end 
+% end
+% 
+% y_right = zeros(1,30);
+% for i = t
+%     if i >= 0 && i <= t_s_right
+%         y_right(i+1) = y_L_right;
+%     else 
+%         y_right(i+1) = y_L_right + (1 - exp((-1).*((i-t_s_right)./(tau_r)))).*(y_h_right - y_L_right);
+%     end 
+% end
 
 % Winter Tires
 
