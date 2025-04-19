@@ -33,7 +33,7 @@ indx = 1;
 %% ____________________
 %% CALCULATIONS
 
-while (cleanMean(indx) <= 0.5) %index clean mean to find time acc
+while (y(indx) <= 0.5) %index clean mean to find time acc
 %finds it using threshold method of differece between points
     TimeAcc = x(indx);
     yL = y(indx);
