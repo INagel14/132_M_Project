@@ -28,22 +28,23 @@ function[Tau] = M2_sub4_124_23_thussp(x,y,Vf,yL, TimeAcc)
 data(:,1)= x;
 data(:,2)= y;
 
-var = 0;
-indx = 1;
-tolerance = 0.25;
+var = 0; %boolean variable marked as false
+indx = 1; %initial index
+tolerance = 0.25; %tolerance for velocity change
 
 %% ____________________
 %% CALCULATIONS
 %find y of tau
- y_tau = yL + 0.632 * (Vf - yL);
+ y_tau = yL + 0.632 * (Vf - yL); 
 
-while(var == 0)
+while(var == 0) %while boolean variable is false
 
     if y_tau <= (y(indx) + tolerance) && y_tau >= (y(indx) - tolerance)
         Tau = x(indx) - TimeAcc;
-        var = 1;
+        var = 1; %marks variable as true if the selected y val is greater
+%than y_tau
     end
-    indx = indx +1;
+    indx = indx +1; %index if untrue
 end
 
 %  %find the closes y value to that in the data

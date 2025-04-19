@@ -33,26 +33,17 @@ indx = 1;
 %% ____________________
 %% CALCULATIONS
 
-cleanMean = movmean(y,40);
+cleanMean = movmean(y,40); %creates mean average graph go
 figure;
-plot(x,cleanMean,'-r');
+plot(x,cleanMean,'-r'); % plot graph of mean
 
-while (cleanMean(indx) <= 0.5)
+while (cleanMean(indx) <= 0.5) %index clean mean to find time acc
+%finds it using threshold method of differece between points
     TimeAcc = x(indx);
     yL = y(indx);
     indx = indx + 1;
 
 end
-
-
-% for index = 1:length(x)-1
-%     if ~found && abs(cleanMean(index+1) - cleanMean(index)) > 1.1
-%         TimeAcc = x(index+1);
-%         yL = cleanMean(index+1);
-%         found = true;  % mark found point
-%     end
-% end
-
 
 
 %% ____________________

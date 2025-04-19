@@ -26,32 +26,112 @@ function [Vi, Vf]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 
 %% ____________________
 %% INITIALIZATION
+
 Vf= max(SpeedClean);
 cleanMean = movmean(SpeedClean,40); %cleaning y values
 
 vixdata= TimeClean(:,1:round(TimeAcc)); % x data before acceleration
-viydata= cleanMean(:, 1:round(TimeAcc)); % y data before acceleration
+viydata= SpeedClean(:, 1:round(TimeAcc)); % y data before acceleration
 
-finaly= cleanMean(:, round(TimeAcc):end); % y/speed values of data after acceleration
+finaly= SpeedClean(:, round(TimeAcc):end); % y/speed values of data after acceleration
 finalx= TimeClean(:,round(TimeAcc):end); % x/time values of data after acceleration
 
-slope_threshold= 0.05; % value that makes sure slope is close to 0
+slope_threshold= 0.01; % value that makes sure slope is close to 0
 index= 0; %setting index for determing when flatenned curve starts
+
 
 %% ____________________
 %% CALCULATIONS
 %Output = Input .* 3; %practicing subfunction
 
-%finding linear model of start to acceleration time
-linstart= polyfit(vixdata, viydata, 1); 
-Vimodel= linstart(1)* vixdata+ linstart(2);
+timeLength = length(finalx);
+slope = zeros(1, timeLength-2);
+% Find Vf
 
-lastx= vixdata(end); %finding last x value if needed for reference or graphing
-lasty= polyval(linstart, lastx); %finding last y value according to regression
-firsty= linstart(2); %first y value is y intercept-- velocity can't be negative
-firstx= 0; %first x value is at intercept
+for idx = 3:timeLength
+    % Find Y2 - Y1d
+    changeY = finaly(idx) - finaly(idx-2);
 
 Vi= mean([lasty, firsty]); % averaging final and intial y values to find initial velocity
+    % Find X2 - X1
+    changeX = finalx(idx) - finalx(idx-2);
+
+    slope(idx-2) = changeY/changeX;
+
+end
+
+% Find the index for the final velocity
+veloFinalIndex = find(slope < slope_threshold, 1);
+
+% Go back one index to determine the actual spot
+avgFinalStart = veloFinalIndex + 2;
+
+finalvelocityVals = finaly(avgFinalStart:end);
+
+Vf = mean(finalvelocityVals);
+
+
+
+
+% Find Vi
+timeLength2 = length(vixdata);
+slope2 = zeros(1, timeLength2-2);
+
+for idx = 3:timeLength2
+    % Find Y2 - Y1d
+    changeY2 = viydata(idx) - viydata(idx-2);
+
+    % Find X2 - X1
+    changeX2 = vixdata(idx) - vixdata(idx-2);
+
+    slope2(idx-2) = changeY2/changeX2; 
+
+end
+
+% Find the index for the final velocity
+veloFinalIndex2 = find(slope2 > slope_threshold, 1);
+
+% Go back one index to determine the actual spot
+avgInitialStart = veloFinalIndex2 + 2;
+
+initialVelocityVals = viydata(avgInitialStart:end);
+
+Vi = mean(initialVelocityVals);
+
+
+
+
+
+
+
+
+
+
+
+%finding linear model of start to acceleration time
+% linstart= polyfit(vixdata, viydata, 1); 
+% Vimodel= linstart(1)* vixdata+ linstart(2);
+% 
+% lastx= vixdata(end); %finding last x value if needed for reference or graphing
+% lasty= polyval(linstart, lastx); %finding last y value according to regression
+% firsty= linstart(2); %first y value is y intercept-- velocity can't be negative
+% firstx= 0; %first x value is at intercept
+% 
+% change_line= abs(SpeedClean(2:end)-SpeedClean(1:end-1)); %finding the difference between side by side points
+% 
+% for y= 1:length(change_line) 
+%      if change_line(y) < slope_threshold && index == 0
+%          flat_indices = [flat_indices, y];
+%          index= 1;
+%      end
+% end
+% 
+% Vfstart_index = flat_indices(1) + 1; %identifying start point of data
+% Vfdata = cleanMean(Vfstart_index:end); % creating vector of data for final velocity
+% 
+% 
+% Vi= mean([lasty, firsty]); % averaging final and intial y values to find initial velocity
+% Vf= mean(Vfdata);
 
 
 
