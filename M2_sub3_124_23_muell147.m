@@ -76,6 +76,8 @@ Vf = mean(finalvelocityVals);
 % Find Vi
 Vi = mean(viydata);
 
+% Change
+
 
 
 
