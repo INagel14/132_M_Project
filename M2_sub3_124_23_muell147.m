@@ -44,19 +44,18 @@ index= 0; %setting index for determing when flatenned curve starts
 %% CALCULATIONS
 %Output = Input .* 3; %practicing subfunction
 
-timeLength = length(finalx);
-slope = zeros(1, timeLength-2);
+timeLength = length(finalx); % makes vector for all time values
+slope = zeros(1, timeLength-4); % makes a vector to iterate through slope in function
 % Find Vf
 
-for idx = 3:timeLength
+for idx = 5:timeLength
     % Find Y2 - Y1d
-    changeY = finaly(idx) - finaly(idx-2);
+    changeY = finaly(idx) - finaly(idx-4);
 
-Vi= mean([lasty, firsty]); % averaging final and intial y values to find initial velocity
     % Find X2 - X1
-    changeX = finalx(idx) - finalx(idx-2);
+    changeX = finalx(idx) - finalx(idx-4);
 
-    slope(idx-2) = changeY/changeX;
+    slope(idx-4) = changeY/changeX;
 
 end
 
@@ -64,7 +63,7 @@ end
 veloFinalIndex = find(slope < slope_threshold, 1);
 
 % Go back one index to determine the actual spot
-avgFinalStart = veloFinalIndex + 2;
+avgFinalStart = veloFinalIndex + 4;
 
 finalvelocityVals = finaly(avgFinalStart:end);
 
