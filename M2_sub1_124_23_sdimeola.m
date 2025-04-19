@@ -36,7 +36,7 @@ SpeedClean = []; % empty vector to hold cleaned speed data
 numX = numel(TimeOg); % variable to hold size of original data set
 disp(numX); % Debug code
 count = 0; % counter for loop iteration
-numParse = 20; % Opperator to Designate Number of Elements being looked at
+numParse = 200; % Opperator to Designate Number of Elements being looked at
 StdThreshold = 1; % Threshold for Standard Deviation
 
 %% ____________________
@@ -57,7 +57,7 @@ for i = 1:numParse: (numX - numParse + 1)
         p = polyfit(timeChunk, speedChunk, 1);
         speedFit = polyval(p, timeChunk);
 
-        leftovers = abd(speedChunk - speedFit);
+        leftovers = abs(speedChunk - speedFit);
         locStd = std(leftovers);
 
         %disp(locStd);
