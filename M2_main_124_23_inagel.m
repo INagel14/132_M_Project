@@ -95,6 +95,18 @@ Speed_SUV_Summer_Test5 = testData(:,46);
 SuperVar = testData(:,2:46);
 
 indx = 2;
+
+% Create boundary variables
+t = [0:30];
+t_s_left = 4.50;
+t_s_right = 6.00;
+tau_l = 1.26;
+tau_r = 3.89;
+y_L_left = 1.10;
+y_L_right = -0.90;
+y_h_left = 25.82;
+y_h_right = 23.36;
+
 %% ____________________
 %% CALCULATIONS
 
@@ -105,6 +117,24 @@ indx = 2;
 %Test3 =  M2_sub3_124_23_muell147(Time);
 
 
+y_left = zeros(1,30);
+
+for i = t
+    if i >= 0 && i <= t_s_left
+        y_left(i+1) = y_L_left;
+    else 
+        y_left(i+1) = y_L_left + (1 - exp((-1).*((i-t_s_left)./(tau_l)))).*(y_h_left - y_L_left);
+    end 
+end
+
+y_right = zeros(1,30);
+for i = t
+    if i >= 0 && i <= t_s_right
+        y_right(i+1) = y_L_right;
+    else 
+        y_right(i+1) = y_L_right + (1 - exp((-1).*((i-t_s_right)./(tau_r)))).*(y_h_right - y_L_right);
+    end 
+end
 
 
 while indx <= 2
@@ -119,6 +149,14 @@ while indx <= 2
   [Vi, Vf] = M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
 
   [Tau] = M2_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
+
+for idx = TimeClean
+    if idx >= 0 && idx <= TimeAcc
+        Vi(i+1) = Vi;
+    else 
+        y_left(i+1) = y_L_left + (1 - exp((-1).*((i-t_s_left)./(tau_l)))).*(y_h_left - y_L_left);
+    end 
+end
 
     indx = indx +1;
 
