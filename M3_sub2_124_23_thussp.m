@@ -63,7 +63,7 @@ TimeAcc_index = Index + Window-1;
 
 TimeAcc = x(TimeAcc_index);
 
-yL = y(TimeAcc_index);
+yL = newY(TimeAcc_index);
 
 fprintf('The time of acceleration is: %0.2f\n',TimeAcc);
 
