@@ -31,7 +31,8 @@ function[] = M3_main_124_23_inagel()
 % Pull all data from the spreadsheet
 testData = readmatrix('Sp25_cruiseAuto_M3benchmark_data.csv','NumHeaderLines',1);
 
-numCol = width(testData);
+%numCol = width(testData);
+numCol = 2;
 
 % Pull in ALL the columns for graphical analysis
 time = testData(:,1);
@@ -92,21 +93,22 @@ while indx <= numCol
 
   [Tau] = M3_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
 
+  M3_Benchmark_124_23(TimeAcc, Tau, Vi, Vf, indx);
 
-  calcLine = zeros(1,30);
-for idx = t
-    if idx >= 0 && idx <= TimeAcc
-        calcLine(idx+1) = Vi;
-    else 
-        calcLine(idx+1) = Vi + (1 - exp((-1).*((idx-TimeAcc)./(Tau)))).*(Vf - Vi);
-    end 
-end
-
-figure; 
-plot(t, calcLine);
-hold on
-plot(t,y_right);
-plot(t,y_left);
+%   calcLine = zeros(1,30);
+% for idx = t
+%     if idx >= 0 && idx <= TimeAcc
+%         calcLine(idx+1) = Vi;
+%     else 
+%         calcLine(idx+1) = Vi + (1 - exp((-1).*((idx-TimeAcc)./(Tau)))).*(Vf - Vi);
+%     end 
+% end
+% 
+% figure; 
+% plot(t, calcLine);
+% hold on
+% plot(t,y_right);
+% plot(t,y_left);
 
     indx = indx +1;
 
