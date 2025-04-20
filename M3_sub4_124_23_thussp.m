@@ -65,7 +65,7 @@ Tau = x(indx)-TimeAcc;
 % %  [~, apprxYTauIdx] = min(abs(data(2,:) - y_tau));
 % % %find the x value of that and then subtract ts to get tau
 % % Tau = data(apprxYTauIdx,1) - TimeAcc;
-fprintf('Tau equals: %0.2f\n',Tau);
+fprintf('The value for Tau is: %0.2f\n',Tau);
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
