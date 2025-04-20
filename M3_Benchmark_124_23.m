@@ -77,8 +77,34 @@ if newIdx == 1
 
 elseif newIdx == 2
     % Calc here
+    % Find TimeAccc error
+    errorTimeAcc = (abs(sedanTimeAccBench - TimeAcc) ./ sedanTimeAccBench) .* 100;
+    % Find Tau error
+    errorTau = (abs(sedanTauBench - Tau) ./ sedanTauBench) .* 100;
+    % Find Vi error
+    errorVi = (abs(sedanViBench - Vi) ./ sedanViBench) .* 100;
+    % Fnd Vf
+    errorVf = (abs(sedanVfBench - Vf) ./ sedanVfBench) .* 100;
+    % Output all data
+    fprintf('The percent error in the acceleration start time is %0.2f %% \n',errorTimeAcc);
+    fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
+    fprintf('The percent error in the initial velocity is %0.2f %% \n',errorVi);
+    fprintf('The percent error in the final velocity is %0.2f %% \n',errorVf);
 elseif newIdx == 3
     % Calc here
+    % Find TimeAccc error
+    errorTimeAcc = (abs(SUVTimeAccBench - TimeAcc) ./ SUVTimeAccBench) .* 100;
+    % Find Tau error
+    errorTau = (abs(SUVTauBench - Tau) ./ SUVTauBench) .* 100;
+    % Find Vi error
+    errorVi = (abs(SUVViBench - Vi) ./ SUVViBench) .* 100;
+    % Fnd Vf
+    errorVf = (abs(SUVVfBench - Vf) ./ SUVVfBench) .* 100;
+    % Output all data
+    fprintf('The percent error in the acceleration start time is %0.2f %% \n',errorTimeAcc);
+    fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
+    fprintf('The percent error in the initial velocity is %0.2f %% \n',errorVi);
+    fprintf('The percent error in the final velocity is %0.2f %% \n',errorVf);
 else
     % Display error message?
 end
