@@ -39,7 +39,8 @@ finalx= TimeClean(:,round(TimeAcc):end); % x/time values of data after accelerat
 slope_threshold = 0.001; % value that makes sure slope is close to 0
 index= 0; %setting index for determing when flatenned curve starts
 
-Window = 300;
+% Found to be most accurate value on 4/20/2025
+Window = 450;
 
 %% ____________________
 %% CALCULATIONS
@@ -119,7 +120,7 @@ fprintf('The final velocity is %.3f\n', Vf)
 % 
 % %% ____________________
 % %% RESULTS
-fprintf('Data successfully passed to subfunction 3 programmed by Elizabeth Mueller.\n')
+%fprintf('Data successfully passed to subfunction 3 programmed by Elizabeth Mueller.\n')
 
 
 %% ____________________
