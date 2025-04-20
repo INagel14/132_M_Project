@@ -88,7 +88,7 @@ isSpeedFull = numel(SpeedClean); % Debug: Verify if loop is working
 %disp(count);
 %% ____________________
 %% RESULTS
-fprintf('Data successfully passed to subfunction 2 programmed by Skyler DiMeola.\n')
+%fprintf('Data successfully passed to subfunction 2 programmed by Skyler DiMeola.\n')
 end
 %% ____________________
 %% ACADEMIC INTEGRITY STATEMENT
