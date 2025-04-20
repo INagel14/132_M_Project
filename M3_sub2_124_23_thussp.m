@@ -33,9 +33,12 @@ indx = 1;
 
 slope_threshold = 0.2;
 
+% Found to be best value (tested 55, 60, 65, 70
 Window = 60;
 %% ____________________
 %% CALCULATIONS
+
+newY = movmean(y,2);
 
 timeLength = length(y); % makes vector for all time values
 slope = zeros(1, timeLength-Window); % makes a vector to iterate through slope in function
@@ -43,7 +46,7 @@ slope = zeros(1, timeLength-Window); % makes a vector to iterate through slope i
 
 for idx = (Window+1):timeLength
     % Find Y2 - Y1d
-    changeY = y(idx) - y(idx-Window);
+    changeY = newY(idx) - newY(idx-Window);
 
     % Find X2 - X1
     changeX = x(idx) - x(idx-Window);
@@ -61,6 +64,8 @@ TimeAcc_index = Index + Window-1;
 TimeAcc = x(TimeAcc_index);
 
 yL = y(TimeAcc_index);
+
+fprintf('The time of acceleration is: %0.2f\n',TimeAcc);
 
 
 
