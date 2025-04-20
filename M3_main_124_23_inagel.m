@@ -31,8 +31,8 @@ function[] = M3_main_124_23_inagel()
 % Pull all data from the spreadsheet
 testData = readmatrix('Sp25_cruiseAuto_M3benchmark_data.csv','NumHeaderLines',1);
 
-%numCol = width(testData);
-numCol = 2;
+numCol = width(testData);
+%numCol = 2;
 
 % Pull in ALL the columns for graphical analysis
 time = testData(:,1);
@@ -86,7 +86,6 @@ while indx <= numCol
     [TimeClean, SpeedClean] = M3_sub1_124_23_sdimeola(time, rawY);
 
     [TimeAcc, yL] = M3_sub2_124_23_thussp(TimeClean, SpeedClean);
-    fprintf('TimeAcc: %0.2f\n',TimeAcc);
 
    
   [Vi, Vf] = M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
