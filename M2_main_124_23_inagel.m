@@ -137,7 +137,7 @@ for i = t
 end
 
 
-while indx <= 2
+while indx <= 10
     rawY = testData(:,indx);
 
     [TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY);
@@ -150,13 +150,21 @@ while indx <= 2
 
   [Tau] = M2_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
 
-for idx = TimeClean
+
+  calcLine = zeros(1,30);
+for idx = t
     if idx >= 0 && idx <= TimeAcc
-        Vi(i+1) = Vi;
+        calcLine(idx+1) = Vi;
     else 
-        y_left(i+1) = y_L_left + (1 - exp((-1).*((i-t_s_left)./(tau_l)))).*(y_h_left - y_L_left);
+        calcLine(idx+1) = Vi + (1 - exp((-1).*((idx-TimeAcc)./(Tau)))).*(Vf - Vi);
     end 
 end
+
+figure; 
+plot(t, calcLine);
+hold on
+plot(t,y_right);
+plot(t,y_left);
 
     indx = indx +1;
 
