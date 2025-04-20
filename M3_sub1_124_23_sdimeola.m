@@ -1,5 +1,5 @@
 
-function[TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY)
+function[TimeClean, SpeedClean] = M3_sub1_124_23_sdimeola(time, rawY)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132
 % Run subfunction 2 to clean the data.

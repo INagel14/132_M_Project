@@ -1,4 +1,4 @@
-function[] = M2_main_124_23_inagel()
+function[] = M3_main_124_23_inagel()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run the skeleton function that runs all the functions

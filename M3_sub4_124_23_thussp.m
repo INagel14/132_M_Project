@@ -1,4 +1,4 @@
-function[Tau] = M2_sub4_124_23_thussp(x,y,Vf,yL, TimeAcc)
+function[Tau] = M3_sub4_124_23_thussp(x,y,Vf,yL, TimeAcc)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Program Description 
