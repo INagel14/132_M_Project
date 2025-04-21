@@ -27,9 +27,6 @@ function [Vi, Vf]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %% ____________________
 %% INITIALIZATION
 
-Vf= max(SpeedClean);
-cleanMean = movmean(SpeedClean,40); %cleaning y values
-
 vixdata= TimeClean(:,1:round(TimeAcc)); % x data before acceleration
 viydata= SpeedClean(:, 1:round(TimeAcc)); % y data before acceleration
 
