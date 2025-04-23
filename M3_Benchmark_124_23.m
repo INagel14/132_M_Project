@@ -62,13 +62,13 @@ newIdx = indx-1;
 if newIdx == 1
     % Calc here
     % Find TimeAccc error
-    errorTimeAcc = (abs(compTimeAccBench - TimeAcc) ./ compTimeAccBench) .* 100;
+    errorTimeAcc = (abs((compTimeAccBench - TimeAcc) ./ compTimeAccBench)) .* 100;
     % Find Tau error
-    errorTau = (abs(compTauBench - Tau) ./ compTauBench) .* 100;
+    errorTau = (abs((compTauBench - Tau) ./ compTauBench)) .* 100;
     % Find Vi error
-    errorVi = (abs(compViBench - Vi) ./ compViBench) .* 100;
+    errorVi = (abs((compViBench - Vi) ./ compViBench)) .* 100;
     % Fnd Vf
-    errorVf = (abs(compVfBench - Vf) ./ compVfBench) .* 100;
+    errorVf = (abs((compVfBench - Vf) ./ compVfBench)) .* 100;
     % Output all data
     fprintf('The percent error in the acceleration start time is %0.2f %% \n',errorTimeAcc);
     fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
@@ -78,13 +78,13 @@ if newIdx == 1
 elseif newIdx == 2
     % Calc here
     % Find TimeAccc error
-    errorTimeAcc = (abs(sedanTimeAccBench - TimeAcc) ./ sedanTimeAccBench) .* 100;
+    errorTimeAcc = (abs((sedanTimeAccBench - TimeAcc) ./ sedanTimeAccBench)) .* 100;
     % Find Tau error
-    errorTau = (abs(sedanTauBench - Tau) ./ sedanTauBench) .* 100;
+    errorTau = (abs((sedanTauBench - Tau) ./ sedanTauBench)) .* 100;
     % Find Vi error
-    errorVi = (abs(sedanViBench - Vi) ./ sedanViBench) .* 100;
+    errorVi = (abs((sedanViBench - Vi) ./ sedanViBench)) .* 100;
     % Fnd Vf
-    errorVf = (abs(sedanVfBench - Vf) ./ sedanVfBench) .* 100;
+    errorVf = (abs((sedanVfBench - Vf) ./ sedanVfBench)) .* 100;
     % Output all data
     fprintf('The percent error in the acceleration start time is %0.2f %% \n',errorTimeAcc);
     fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
@@ -93,13 +93,13 @@ elseif newIdx == 2
 elseif newIdx == 3
     % Calc here
     % Find TimeAccc error
-    errorTimeAcc = (abs(SUVTimeAccBench - TimeAcc) ./ SUVTimeAccBench) .* 100;
+    errorTimeAcc = (abs((SUVTimeAccBench - TimeAcc) ./ SUVTimeAccBench)) .* 100;
     % Find Tau error
-    errorTau = (abs(SUVTauBench - Tau) ./ SUVTauBench) .* 100;
+    errorTau = (abs((SUVTauBench - Tau) ./ SUVTauBench)) .* 100;
     % Find Vi error
-    errorVi = (abs(SUVViBench - Vi) ./ SUVViBench) .* 100;
+    errorVi = (abs((SUVViBench - Vi) ./ SUVViBench)) .* 100;
     % Fnd Vf
-    errorVf = (abs(SUVVfBench - Vf) ./ SUVVfBench) .* 100;
+    errorVf = (abs((SUVVfBench - Vf) ./ SUVVfBench)) .* 100;
     % Output all data
     fprintf('The percent error in the acceleration start time is %0.2f %% \n',errorTimeAcc);
     fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
