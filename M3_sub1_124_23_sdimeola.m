@@ -36,7 +36,7 @@ SpeedOg = rawY(:); % vector to hold function input for speed
 TimeClean = []; % empty vector to hold cleaned time data
 SpeedClean = []; % empty vector to hold cleaned speed data
 chunkSize = 10;
-chunkOverlap = 5;
+chunkOverlap = 7;
 madThreshold = 0.5;
 
 
