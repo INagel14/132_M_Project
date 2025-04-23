@@ -31,10 +31,10 @@ TimeAcc = NaN;
 yL = NaN;
 indx = 1;
 
-slope_threshold = 0.9;
+slope_threshold = 0.7;
 
 % Found to be best value (tested 55, 60, 65, 70
-Window = 60;
+Window = 100;
 %% ____________________
 %% CALCULATIONS
 
