@@ -1,4 +1,4 @@
-function[] = M3_Benchmark_124_23(TimeAcc, Tau, Vi, Vf, indx);
+function[] = M3_Benchmark_124_23(time, TimeClean, SpeedClean, TimeAcc, Tau, Vi, Vf, indx);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run the skeleton function that runs all the functions
@@ -52,7 +52,7 @@ newIdx = indx-1;
 %% CALCULATIONS
 
 % Part 4a: Calculate SSE to evaluate data cleaning
-
+timeLength = length(TimeClean);
 
 
 % Part 4b: Algo accuracy analysis 
@@ -61,6 +61,12 @@ newIdx = indx-1;
 
 if newIdx == 1
     % Calc here
+    % SSE calculations
+    for i = 1:timeLength
+    % Calculate SSE
+    SSE = sum((time(i)-TimeClean(i))^2)/timeLength;
+
+    end
     % Find TimeAccc error
     errorTimeAcc = (abs((compTimeAccBench - TimeAcc) ./ compTimeAccBench)) .* 100;
     % Find Tau error
@@ -74,9 +80,16 @@ if newIdx == 1
     fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
     fprintf('The percent error in the initial velocity is %0.2f %% \n',errorVi);
     fprintf('The percent error in the final velocity is %0.2f %% \n',errorVf);
+    fprintf('The SSE is: %0.2f\n',SSE);
 
 elseif newIdx == 2
     % Calc here
+
+    for i = 1:timeLength
+    % Calculate SSE
+    SSE = sum((time(i)-TimeClean(i))^2)/timeLength;
+
+    end
     % Find TimeAccc error
     errorTimeAcc = (abs((sedanTimeAccBench - TimeAcc) ./ sedanTimeAccBench)) .* 100;
     % Find Tau error
@@ -90,8 +103,16 @@ elseif newIdx == 2
     fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
     fprintf('The percent error in the initial velocity is %0.2f %% \n',errorVi);
     fprintf('The percent error in the final velocity is %0.2f %% \n',errorVf);
+    fprintf('The SSE is: %0.2f\n',SSE);
+
 elseif newIdx == 3
     % Calc here
+
+    for i = 1:timeLength
+    % Calculate SSE
+    SSE = sum((time(i)-TimeClean(i))^2)/timeLength;
+    end
+
     % Find TimeAccc error
     errorTimeAcc = (abs((SUVTimeAccBench - TimeAcc) ./ SUVTimeAccBench)) .* 100;
     % Find Tau error
@@ -105,6 +126,7 @@ elseif newIdx == 3
     fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
     fprintf('The percent error in the initial velocity is %0.2f %% \n',errorVi);
     fprintf('The percent error in the final velocity is %0.2f %% \n',errorVf);
+    fprintf('The SSE is: %0.2f\n',SSE);
 else
     % Display error message?
 end
