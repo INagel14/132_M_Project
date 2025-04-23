@@ -38,7 +38,6 @@ Window = 100;
 %% ____________________
 %% CALCULATIONS
 
-newY = movmean(y,2);
 
 timeLength = length(y); % makes vector for all time values
 slope = zeros(1, timeLength-Window); % makes a vector to iterate through slope in function
@@ -46,7 +45,7 @@ slope = zeros(1, timeLength-Window); % makes a vector to iterate through slope i
 
 for idx = (Window+1):timeLength
     % Find Y2 - Y1d
-    changeY = newY(idx) - newY(idx-Window);
+    changeY = y(idx) - y(idx-Window);
 
     % Find X2 - X1
     changeX = x(idx) - x(idx-Window);
