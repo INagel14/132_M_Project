@@ -120,7 +120,7 @@ fprintf('The final velocity is %.3f\n', Vf)
 % 
 % %% ____________________
 % %% RESULTS
-fprintf('Data successfully passed to subfunction 3 programmed by Elizabeth Mueller.\n')
+
 
 
 %% ____________________
