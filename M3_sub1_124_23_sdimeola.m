@@ -27,19 +27,18 @@ function[TimeClean, SpeedClean] = M3_sub1_124_23_sdimeola(time, rawY)
 
 %% ____________________
 %% INITIALIZATION
+%data = readmatrix("Sp25_cruiseAuto_experimental_data.csv");
+%TimeOg = data(:,1);
+%SpeedOg = data(:,2);
+
 TimeOg = time(:); % vector to hold function input for time
-SpeedCompactOg = rawY(:); % vector to hold function input for speed
+SpeedOg = rawY(:); % vector to hold function input for speed
 TimeClean = []; % empty vector to hold cleaned time data
 SpeedClean = []; % empty vector to hold cleaned speed data
-chunkSize = 200;
-chunkOverlap = 50;
-madThreshold = 3;
+chunkSize = 10;
+chunkOverlap = 5;
+madThreshold = 0.5;
 
-%numX = numel(TimeOg); % variable to hold size of original data set
-%disp(numX); % Debug code
-%count = 0; % counter for loop iteration
-%numParse = 200; % Opperator to Designate Number of Elements being looked at
-%StdThreshold = 1; % Threshold for Standard Deviation
 
 %% ____________________
 %% CALCULATIONS
@@ -47,54 +46,42 @@ madThreshold = 3;
 % regression of those data points, removng any that fall outside the
 % standard deviation.
 for i = 1:(chunkSize - chunkOverlap):(numel(TimeOg) - chunkSize + 1)
-    idx = i:i + chunkSize  - 1;
+    idx = i:i + chunkSize - 1;
     timeChunk = TimeOg(idx);
-    speedChunk = SpeedCompactOg(idx);
-
-    %validIdx = speedChunk >= 0;
-    %timeChunk = timeChunk(validIdx);
-    %speedChunk = speedChunk(validIdx);
+    speedChunk = SpeedOg(idx);
 
     if numel(speedChunk) >= 2
         p = polyfit(timeChunk, speedChunk, 1);
         speedFit = polyval(p, timeChunk);
-
         leftovers = abs(speedChunk - speedFit);
-        mad = 1.4826 * median(leftovers);
-        isInlier = leftovers <= madThreshold * mad;
 
-        if any(isInlier)
+        mad = 1.4826 * median(leftovers);
+        normalizeLeftovers = leftovers / (mad + eps);
+        isInlier = normalizeLeftovers <= madThreshold;
+
+        if sum(isInlier) >= 2
+            pRefined = polyfit(timeChunk(isInlier), speedChunk(isInlier), 1);
+
+            speedFitRefined = polyval(pRefined, timeChunk);
+            leftoversRefined = abs(speedChunk - speedFitRefined);
+            madRefined = 1.4826 * median(leftoversRefined(isInlier));
+            isInlier = leftoversRefined <= madThreshold * madRefined;
+
             TimeClean = [TimeClean; timeChunk(isInlier)];
             SpeedClean = [SpeedClean; speedChunk(isInlier)];
         end
-
-
-
-        %disp(locStd)s
-        %for j = 1:length(timeChunk)
-        %    if leftovers(j) <= StdThreshold * locStd
-        %        TimeClean(end + 1) = timeChunk(j);
-        %        SpeedClean(end + 1) = speedChunk(j);
-        %        count = count + 1;
-        %    end
-        %end
     end
 end
-
-TimeClean = TimeClean(:);
-SpeedClean = SpeedClean(:);
-%isTimeFull = numel(TimeClean); % Debug: Verify if loop is working
-%isSpeedFull = numel(SpeedClean); % Debug: Verify if loop is working
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
-%figure;
-%scatter(TimeClean, SpeedClean);
-%title('Cleaned Time Data vs. Cleaned Speed Data')
-%xlabel('Cleaned Time Data')
-%ylabel('Cleaned Speed Data')
+figure;
+scatter(TimeClean, SpeedClean);
+title('Cleaned Time Data vs. Cleaned Speed Data')
+xlabel('Cleaned Time Data')
+ylabel('Cleaned Speed Data')
 
-%figure;
-%plot(TimeClean,SpeedClean,'-g');
+figure;
+plot(TimeClean,SpeedClean,'-g');
 %disp(isSpeedFull);
 %disp(isTimeFull);
 %disp(count);
