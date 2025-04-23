@@ -1,5 +1,5 @@
 
-function[TimeClean, SpeedClean] = M2_sub1_124_23_sdimeola(time, rawY)
+function[TimeClean, SpeedClean] = M3_sub1_124_23_sdimeola(time, rawY)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132
 % Run subfunction 2 to clean the data.
@@ -36,7 +36,7 @@ SpeedClean = []; % empty vector to hold cleaned speed data
 numX = numel(TimeOg); % variable to hold size of original data set
 disp(numX); % Debug code
 count = 0; % counter for loop iteration
-numParse = 20; % Opperator to Designate Number of Elements being looked at
+numParse = 200; % Opperator to Designate Number of Elements being looked at
 StdThreshold = 1; % Threshold for Standard Deviation
 
 %% ____________________
@@ -75,20 +75,20 @@ isTimeFull = numel(TimeClean); % Debug: Verify if loop is working
 isSpeedFull = numel(SpeedClean); % Debug: Verify if loop is working
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
-figure;
-scatter(TimeClean, SpeedClean);
-title('Cleaned Time Data vs. Cleaned Speed Data')
-xlabel('Cleaned Time Data')
-ylabel('Cleaned Speed Data')
+%figure;
+%scatter(TimeClean, SpeedClean);
+%title('Cleaned Time Data vs. Cleaned Speed Data')
+%xlabel('Cleaned Time Data')
+%ylabel('Cleaned Speed Data')
 
-figure;
-plot(TimeClean,SpeedClean,'-g');
+%figure;
+%plot(TimeClean,SpeedClean,'-g');
 %disp(isSpeedFull);
 %disp(isTimeFull);
 %disp(count);
 %% ____________________
 %% RESULTS
-fprintf('Data successfully passed to subfunction 2 programmed by Skyler DiMeola.\n')
+%fprintf('Data successfully passed to subfunction 2 programmed by Skyler DiMeola.\n')
 end
 %% ____________________
 %% ACADEMIC INTEGRITY STATEMENT
