@@ -1,4 +1,4 @@
-function[] = M3_Performance_124_23()
+function[] = M3_Performance_124_23(TimeAcc, Tau )
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run the skeleton function that runs all the functions
