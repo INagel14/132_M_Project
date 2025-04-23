@@ -40,8 +40,8 @@ y_h_left = 25.82;
 y_h_right = 23.36;
 
 % Create blank vectors for graphing
-y_left = zeros(1,30);
-y_right = zeros(1,30);
+y_left = zeros(1,31);
+y_right = zeros(1,31);
 
 
 %% ____________________
