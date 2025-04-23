@@ -27,8 +27,8 @@ function[TimeClean, SpeedClean] = M3_sub1_124_23_sdimeola(time, rawY)
 
 %% ____________________
 %% INITIALIZATION
-TimeOg = time; % vector to hold function input for time
-SpeedCompactOg = rawY; % vector to hold function input for speed
+TimeOg = time(:); % vector to hold function input for time
+SpeedCompactOg = rawY(:); % vector to hold function input for speed
 TimeClean = []; % empty vector to hold cleaned time data
 SpeedClean = []; % empty vector to hold cleaned speed data
 chunkSize = 200;
@@ -63,8 +63,10 @@ for i = 1:(chunkSize - chunkOverlap):(numel(TimeOg) - chunkSize + 1)
         mad = 1.4826 * median(leftovers);
         isInlier = leftovers <= madThreshold * mad;
 
-        TimeClean = [TimeClean, timeChunk(isInlier)];
-        SpeedClean = [SpeedClean, speedChunk(isInlier)];
+        if any(isInlier)
+            TimeClean = [TimeClean; timeChunk(isInlier)];
+            SpeedClean = [SpeedClean; speedChunk(isInlier)];
+        end
 
 
 
@@ -79,6 +81,8 @@ for i = 1:(chunkSize - chunkOverlap):(numel(TimeOg) - chunkSize + 1)
     end
 end
 
+TimeClean = TimeClean(:);
+SpeedClean = SpeedClean(:);
 %isTimeFull = numel(TimeClean); % Debug: Verify if loop is working
 %isSpeedFull = numel(SpeedClean); % Debug: Verify if loop is working
 %% ____________________
