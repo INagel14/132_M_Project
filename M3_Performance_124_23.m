@@ -46,11 +46,6 @@ y_right = zeros(1,30);
 
 %% ____________________
 %% CALCULATIONS
-
-
-
-
-
 % Calculate the left bound graph line
 for i = t
     if i >= 0 && i <= t_s_left
@@ -71,20 +66,20 @@ for i = t
 end
 
 
-%   calcLine = zeros(1,30);
-% for idx = t
-%     if idx >= 0 && idx <= TimeAcc
-%         calcLine(idx+1) = Vi;
-%     else 
-%         calcLine(idx+1) = Vi + (1 - exp((-1).*((idx-TimeAcc)./(Tau)))).*(Vf - Vi);
-%     end 
-% end
-% 
-% figure; 
-% plot(t, calcLine);
-% hold on
-% plot(t,y_right);
-% plot(t,y_left);
+  calcLine = zeros(1,30);
+for idx = t
+    if idx >= 0 && idx <= TimeAcc
+        calcLine(idx+1) = Vi;
+    else 
+        calcLine(idx+1) = Vi + (1 - exp((-1).*((idx-TimeAcc)./(Tau)))).*(Vf - Vi);
+    end 
+end
+
+figure; 
+plot(t, calcLine);
+hold on
+plot(t,y_right);
+plot(t,y_left);
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
