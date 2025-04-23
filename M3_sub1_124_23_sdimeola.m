@@ -36,7 +36,7 @@ SpeedOg = rawY(:); % vector to hold function input for speed
 TimeClean = []; % empty vector to hold cleaned time data
 SpeedClean = []; % empty vector to hold cleaned speed data
 chunkSize = 10;
-chunkOverlap = 5;
+chunkOverlap = 7;
 madThreshold = 0.5;
 
 
@@ -74,14 +74,14 @@ for i = 1:(chunkSize - chunkOverlap):(numel(TimeOg) - chunkSize + 1)
 end
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
-%figure;
-%scatter(TimeClean, SpeedClean);
-%title('Cleaned Time Data vs. Cleaned Speed Data')
-%xlabel('Cleaned Time Data')
-%ylabel('Cleaned Speed Data')
+figure;
+plot(TimeClean, SpeedClean, 'o');
+title('Cleaned Time Data vs. Cleaned Speed Data')
+xlabel('Cleaned Time Data')
+ylabel('Cleaned Speed Data')
 
-%figure;
-%plot(TimeClean,SpeedClean,'-g');
+figure;
+plot(TimeClean,SpeedClean,'-g');
 %disp(isSpeedFull);
 %disp(isTimeFull);
 %disp(count);
