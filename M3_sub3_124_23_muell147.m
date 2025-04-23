@@ -4,7 +4,7 @@ function [Vi, Vf]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %
 % Subfunction 4- finding initial and final velocities, testing function call
 % Function Call
-% [Vf, Vi]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
+% [Vf, Vi]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %
 % Input Arguments
 % TimeClean (variable name for Y data that skyler cleaned)
@@ -16,7 +16,7 @@ function [Vi, Vf]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 % Vi (initial velocity I calculated)
 %
 % Assignment Information
-%   Assignment:     M2, Problem xx
+%   Assignment:     M3, Problem xx
 %   Team member:    Elizabeth Mueller, muell147@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:
@@ -71,44 +71,6 @@ Vf = mean(finalvelocityVals);
 
 % Find Vi
 Vi = mean(viydata);
-
-% Change
-
-
-
-
-
-
-
-
-
-
-
-%finding linear model of start to acceleration time
-% linstart= polyfit(vixdata, viydata, 1); 
-% Vimodel= linstart(1)* vixdata+ linstart(2);
-% 
-% lastx= vixdata(end); %finding last x value if needed for reference or graphing
-% lasty= polyval(linstart, lastx); %finding last y value according to regression
-% firsty= linstart(2); %first y value is y intercept-- velocity can't be negative
-% firstx= 0; %first x value is at intercept
-% 
-% change_line= abs(SpeedClean(2:end)-SpeedClean(1:end-1)); %finding the difference between side by side points
-% 
-% for y= 1:length(change_line) 
-%      if change_line(y) < slope_threshold && index == 0
-%          flat_indices = [flat_indices, y];
-%          index= 1;
-%      end
-% end
-% 
-% Vfstart_index = flat_indices(1) + 1; %identifying start point of data
-% Vfdata = cleanMean(Vfstart_index:end); % creating vector of data for final velocity
-% 
-% 
-% Vi= mean([lasty, firsty]); % averaging final and intial y values to find initial velocity
-% Vf= mean(Vfdata);
-
 
 
 % %% FORMATTED TEXT/FIGURE DISPLAYS
