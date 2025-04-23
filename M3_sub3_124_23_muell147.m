@@ -27,11 +27,11 @@ function [Vi, Vf]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %% ____________________
 %% INITIALIZATION
 
-vixdata= TimeClean(:,1:round(TimeAcc)); % x data before acceleration
-viydata= SpeedClean(:, 1:round(TimeAcc)); % y data before acceleration
+vixdata= TimeClean(1:round(TimeAcc)); % x data before acceleration
+viydata= SpeedClean(1:round(TimeAcc)); % y data before acceleration
 
-finaly= SpeedClean(:,round(TimeAcc):end); % y/speed values of data after acceleration
-finalx= TimeClean(:,round(TimeAcc):end); % x/time values of data after acceleration
+finaly= SpeedClean(round(TimeAcc):end); % y/speed values of data after acceleration
+finalx= TimeClean(round(TimeAcc):end); % x/time values of data after acceleration
 
 slope_threshold = 0.001; % value that makes sure slope is close to 0
 index= 0; %setting index for determing when flatenned curve starts
