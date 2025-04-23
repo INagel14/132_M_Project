@@ -87,11 +87,11 @@ SpeedClean = SpeedClean(:);
 %isSpeedFull = numel(SpeedClean); % Debug: Verify if loop is working
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
-%figure;
-%scatter(TimeClean, SpeedClean);
-%title('Cleaned Time Data vs. Cleaned Speed Data')
-%xlabel('Cleaned Time Data')
-%ylabel('Cleaned Speed Data')
+figure;
+scatter(TimeClean, SpeedClean);
+title('Cleaned Time Data vs. Cleaned Speed Data')
+xlabel('Cleaned Time Data')
+ylabel('Cleaned Speed Data')
 
 %figure;
 %plot(TimeClean,SpeedClean,'-g');
