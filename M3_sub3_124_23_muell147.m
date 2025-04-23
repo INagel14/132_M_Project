@@ -1,10 +1,10 @@
-function [Vi, Vf]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
+function [Vi, Vf]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132
 %
 % Subfunction 4- finding initial and final velocities, testing function call
 % Function Call
-% [Vf, Vi]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
+% [Vf, Vi]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %
 % Input Arguments
 % TimeClean (variable name for Y data that skyler cleaned)
@@ -16,7 +16,7 @@ function [Vi, Vf]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 % Vi (initial velocity I calculated)
 %
 % Assignment Information
-%   Assignment:     M3, Problem xx
+%   Assignment:     M2, Problem xx
 %   Team member:    Elizabeth Mueller, muell147@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:
@@ -27,34 +27,35 @@ function [Vi, Vf]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %% ____________________
 %% INITIALIZATION
 
+Vf= max(SpeedClean);
+cleanMean = movmean(SpeedClean,40); %cleaning y values
+
 vixdata= TimeClean(1:round(TimeAcc)); % x data before acceleration
 viydata= SpeedClean(1:round(TimeAcc)); % y data before acceleration
 
 finaly= SpeedClean(round(TimeAcc):end); % y/speed values of data after acceleration
 finalx= TimeClean(round(TimeAcc):end); % x/time values of data after acceleration
 
-slope_threshold = 0.001; % value that makes sure slope is close to 0
+slope_threshold= 0.01; % value that makes sure slope is close to 0
 index= 0; %setting index for determing when flatenned curve starts
 
-% Found to be most accurate value on 4/20/2025
-Window = 450;
 
 %% ____________________
 %% CALCULATIONS
 %Output = Input .* 3; %practicing subfunction
 
 timeLength = length(finalx); % makes vector for all time values
-slope = zeros(1, timeLength-4); % makes a vector to iterate through slope in function
+slope = zeros(1, timeLength-4); % makes a vector to iterate through slope in function over multiple data points
 % Find Vf
 
-for idx = (Window+1):timeLength
+for idx = 5:timeLength
     % Find Y2 - Y1d
-    changeY = finaly(idx) - finaly(idx-Window);
+    changeY = finaly(idx) - finaly(idx-4);
 
     % Find X2 - X1
-    changeX = finalx(idx) - finalx(idx-Window);
+    changeX = finalx(idx) - finalx(idx-4);
 
-    slope(idx-Window) = changeY/changeX;
+    slope(idx-4) = changeY/changeX;
 
 end
 
@@ -62,15 +63,55 @@ end
 veloFinalIndex = find(slope < slope_threshold, 1);
 
 % Go back one index to determine the actual spot
-avgFinalStart = veloFinalIndex + Window;
+avgFinalStart = veloFinalIndex + 4;
 
 finalvelocityVals = finaly(avgFinalStart:end);
 
 Vf = mean(finalvelocityVals);
 
 
+
+
 % Find Vi
 Vi = mean(viydata);
+
+% Change
+
+
+
+
+
+
+
+
+
+
+
+%finding linear model of start to acceleration time
+% linstart= polyfit(vixdata, viydata, 1); 
+% Vimodel= linstart(1)* vixdata+ linstart(2);
+% 
+% lastx= vixdata(end); %finding last x value if needed for reference or graphing
+% lasty= polyval(linstart, lastx); %finding last y value according to regression
+% firsty= linstart(2); %first y value is y intercept-- velocity can't be negative
+% firstx= 0; %first x value is at intercept
+% 
+% change_line= abs(SpeedClean(2:end)-SpeedClean(1:end-1)); %finding the difference between side by side points
+% 
+% for y= 1:length(change_line) 
+%      if change_line(y) < slope_threshold && index == 0
+%          flat_indices = [flat_indices, y];
+%          index= 1;
+%      end
+% end
+% 
+% Vfstart_index = flat_indices(1) + 1; %identifying start point of data
+% Vfdata = cleanMean(Vfstart_index:end); % creating vector of data for final velocity
+% 
+% 
+% Vi= mean([lasty, firsty]); % averaging final and intial y values to find initial velocity
+% Vf= mean(Vfdata);
+
 
 
 % %% FORMATTED TEXT/FIGURE DISPLAYS
@@ -79,7 +120,7 @@ fprintf('The final velocity is %.3f\n', Vf)
 % 
 % %% ____________________
 % %% RESULTS
-%fprintf('Data successfully passed to subfunction 3 programmed by Elizabeth Mueller.\n')
+
 
 
 %% ____________________
