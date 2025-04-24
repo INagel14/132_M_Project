@@ -1,4 +1,4 @@
-function[] = M3_Performance_124_23(TimeAcc, Tau )
+function[] = M3_Performance_124_23(TimeAcc, Tau, Vi, Vf)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run the skeleton function that runs all the functions
@@ -80,6 +80,7 @@ plot(t, calcLine);
 hold on
 plot(t,y_right);
 plot(t,y_left);
+legend('Data Set', 'Right Bound', 'Left Bound')
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS

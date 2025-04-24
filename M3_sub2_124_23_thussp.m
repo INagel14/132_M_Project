@@ -60,7 +60,7 @@ Index = find(slope > slope_threshold, 1);
 % Go back one index to determine the actual spot
 TimeAcc_index = Index + Window-1;
 
-TimeAcc = x(TimeAcc_index);
+TimeAcc = x(TimeAcc_index); %actual time at x using index
 
 yL = y(TimeAcc_index);
 
