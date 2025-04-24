@@ -66,7 +66,7 @@ for i = t
 end
 
 
-calcLine = zeros(1, length(t));
+calcLine = zeros(1, length(TimeClean));
 for idx = t
     if idx < TimeAcc
     %if idx >= 0 && idx <= TimeAcc;
