@@ -80,7 +80,6 @@ plot(t, calcLine);
 hold on
 plot(t,y_right);
 plot(t,y_left);
-plot(TimeClean,SpeedClean,'-g');
 title('Data and Boundaries');
 legend('Data Set', 'Right Bound', 'Left Bound');
 

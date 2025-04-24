@@ -63,7 +63,7 @@ while indx <= numCol
 
   M3_Benchmark_124_23(time, TimeClean, SpeedClean, TimeAcc, Tau, Vi, Vf, indx);
   
-  M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, SpeedClean, TimeClean);
+  M3_Performance_124_23(TimeAcc, Tau, Vi, Vf);
 
     indx = indx +1;
 
