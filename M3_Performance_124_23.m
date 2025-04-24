@@ -1,4 +1,4 @@
-function[] = M3_Performance_124_23(TimeAcc, Tau, Vi, Vf)
+function[] = M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, SpeedClean, TimeClean)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run the skeleton function that runs all the functions
@@ -68,7 +68,7 @@ end
 
   calcLine = zeros(1,30);
 for idx = t
-    if idx >= 0 && idx <= TimeAcc
+    if idx >= 0 && idx <= TimeAcc;
         calcLine(idx+1) = Vi;
     else 
         calcLine(idx+1) = Vi + (1 - exp((-1).*((idx-TimeAcc)./(Tau)))).*(Vf - Vi);
@@ -80,7 +80,9 @@ plot(t, calcLine);
 hold on
 plot(t,y_right);
 plot(t,y_left);
-legend('Data Set', 'Right Bound', 'Left Bound')
+plot(TimeClean,SpeedClean,'-g');
+title('Data and Boundaries');
+legend('Data Set', 'Right Bound', 'Left Bound');
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
