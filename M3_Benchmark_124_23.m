@@ -61,6 +61,17 @@ timeLength = length(TimeClean);
 
 if newIdx == 1
     % Calc here
+    sseVecStart = find(SpeedClean = vi);
+    sseVecEnd = find(SpeedClean = vf);
+   
+    sseVecSpeed = SpeedClean(sseVecStart : sseVecEnd);
+    sseVecTime = TimeClean(sseVecStart : sseVecEnd);
+    
+    logSseVecSpeed = log(sseVecSpeed);
+    logSseVecTime = log(sseVecTime);
+
+    %% INSERT CORRECT ONES HERE: 
+    polyfit(sseVecTime, sseVecSpeed, 1);
     % SSE calculations
     for i = 1:timeLength
     % Calculate SSE
@@ -84,6 +95,7 @@ if newIdx == 1
 
 elseif newIdx == 2
     % Calc here
+    
 
     for i = 1:timeLength
     % Calculate SSE
