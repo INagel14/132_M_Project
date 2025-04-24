@@ -1,4 +1,4 @@
-function[] = M3_Performance_124_23(TimeAcc, Tau, Vi, Vf)
+function[] = M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, SpeedClean, TimeClean)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run the skeleton function that runs all the functions
@@ -69,6 +69,7 @@ end
 calcLine = zeros(1, length(t));
 for idx = t
     if idx < TimeAcc
+    %if idx >= 0 && idx <= TimeAcc;
         calcLine(idx+1) = Vi;
     elseif idx >= TimeAcc && idx <= TimeAcc + 5
         adj_tau = Tau * (5 / (Vf - Vi)); %  Tau compress to 5 sec
@@ -83,7 +84,8 @@ plot(t, calcLine);
 hold on
 plot(t,y_right);
 plot(t,y_left);
-legend('Data Set', 'Right Bound', 'Left Bound')
+title('Data and Boundaries');
+legend('Data Set', 'Right Bound', 'Left Bound');
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
