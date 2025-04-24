@@ -66,13 +66,16 @@ for i = t
 end
 
 
-  calcLine = zeros(1,30);
+calcLine = zeros(1, length(t));
 for idx = t
-    if idx >= 0 && idx <= TimeAcc
+    if idx < TimeAcc
         calcLine(idx+1) = Vi;
-    else 
-        calcLine(idx+1) = Vi + (1 - exp((-1).*((idx-TimeAcc)./(Tau)))).*(Vf - Vi);
-    end 
+    elseif idx >= TimeAcc && idx <= TimeAcc + 5
+        adj_tau = Tau * (5 / (Vf - Vi)); %  Tau compress to 5 sec
+        calcLine(idx+1) = Vi + (1 - exp(-1 * ((idx - TimeAcc) / Tau))) * (Vf - Vi);
+    else
+        calcLine(idx+1) = Vf;
+    end
 end
 
 figure; 
