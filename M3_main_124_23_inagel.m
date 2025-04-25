@@ -180,8 +180,6 @@ end
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
 
-% Test numcol function
-%fprintf('The number of columns is %0.2f \n',numCol);
 
 
 
