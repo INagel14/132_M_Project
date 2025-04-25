@@ -29,14 +29,14 @@ function[] = M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, time, rawY)
 %% INITIALIZATION
 
 % Create boundary variables for the left and right bound
-t_s_left = 4.50;
-t_s_right = 6.00;
-tau_l = 1.26;
-tau_r = 3.89;
-y_L_left = 1.10;
-y_L_right = -0.90;
-y_h_left = 25.82;
-y_h_right = 23.36;
+t_s_left = 4.50; %time start acc bound
+t_s_right = 6.00;%time start acc bound
+tau_l = 1.26; %tau left bound
+tau_r = 3.89;%tau right bound
+y_L_left = 1.10;%velocity initial left bound
+y_L_right = -0.90;%velocity initial right bound
+y_h_left = 25.82;%velocity final left bound
+y_h_right = 23.36;%velocity final right bound
 
 % Create blank vectors for graphing
 y_left = zeros(1,31);
