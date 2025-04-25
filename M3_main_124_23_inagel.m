@@ -166,7 +166,22 @@ end
     % Call performance
     M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, time, rawY, count);
 
-    
+     %Create a new figure
+    figure;
+    % Plot the raw data in orange (I added a bit of spice)
+    plot(time, rawY, '-','Color','#D95319'); 
+    hold on;
+    % Plot the benchmark first order model in black
+    plot(time, yModel, 'k-','LineWidth', 1);
+    % Properly label the axis
+    xlabel('Time (s)');
+    ylabel('Speed (m/s)');
+    % Add a title
+    title(['Trial #', num2str(count-1),' Benchmark Data vs. Algorithm First-Order Model']);
+    % Add a legend in the best spot
+    legend('Benchmark Data', 'Benchmark Model', 'Location','best');
+    % Turn on the grid because it looks good
+    grid on;
 
     % Make a gap because the data is hard to read
     fprintf('\n\n');
