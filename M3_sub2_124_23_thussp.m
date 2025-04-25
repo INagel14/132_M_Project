@@ -5,7 +5,7 @@ function[TimeAcc,yL] = M3_sub2_124_23_thussp(x,y)
 %This function will find the point at which the object begins to accelerate
 %and find the time constant of the model
 % Function Call
-%M2_sub2_124_23_thussp()
+%M3_sub2_124_23_thussp()
 %
 % Input Arguments
 % Velocity data and final velocity
@@ -14,7 +14,7 @@ function[TimeAcc,yL] = M3_sub2_124_23_thussp(x,y)
 %Marked time of beginning accleration and time constant value
 %
 % Assignment Information
-%   Assignment:     M02, Problem 3
+%   Assignment:     M03, Problem 3
 %   Team member:    Patrick Thuss, thussp@purdue.edu 
 %   Team ID:        124-23
 %   Academic Integrity:
@@ -25,11 +25,11 @@ function[TimeAcc,yL] = M3_sub2_124_23_thussp(x,y)
 
 %% ____________________
 %% INITIALIZATION
-data = [x, y];
-found = false;
-TimeAcc = NaN;
-yL = NaN;
-indx = 1;
+data = [x, y]; %creates data vector
+found = false; %marks found for accelertion point as false
+TimeAcc = NaN; %initializes timeAcc as non number incase not found
+yL = NaN; %initializes yL as non number incase not found
+indx = 1; %initializes index
 
 slope_threshold = 0.7;
 
@@ -50,7 +50,7 @@ for idx = (Window+1):timeLength
     % Find X2 - X1
     changeX = x(idx) - x(idx-Window);
 
-    slope(idx-Window) = changeY/changeX;
+    slope(idx-Window) = changeY/changeX; %assignes slope
 
 end
 
@@ -62,9 +62,9 @@ TimeAcc_index = Index + Window-1;
 
 TimeAcc = x(TimeAcc_index); %actual time at x using index
 
-yL = y(TimeAcc_index);
+yL = y(TimeAcc_index); %assigns yL as the velocity at timeAcc
 
-fprintf('The time of acceleration is: %0.2f\n',TimeAcc);
+fprintf('The time of acceleration is: %0.2f\n',TimeAcc); %prints time acc
 
 
 

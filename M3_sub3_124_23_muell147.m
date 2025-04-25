@@ -1,10 +1,10 @@
-function [Vi, Vf]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
+function [Vi, Vf]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132
 %
 % Subfunction 4- finding initial and final velocities, testing function call
 % Function Call
-% [Vf, Vi]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
+% [Vf, Vi]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %
 % Input Arguments
 % TimeClean (variable name for Y data that skyler cleaned)
@@ -16,7 +16,7 @@ function [Vi, Vf]=  M2_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 % Vi (initial velocity I calculated)
 %
 % Assignment Information
-%   Assignment:     M2, Problem xx
+%   Assignment:     M3, Problem xx
 %   Team member:    Elizabeth Mueller, muell147@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:

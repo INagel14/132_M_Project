@@ -5,7 +5,7 @@ function[TimeClean, SpeedClean] = M3_sub1_124_23_sdimeola(time, rawY)
 % Run subfunction 2 to clean the data.
 %
 % Function Call
-% [TimeClean, SpeedClean] = M2_sub2_124_23_sdimeola(time, rawY)
+% [TimeClean, SpeedClean] = M3_sub2_124_23_sdimeola(time, rawY)
 %
 % Input Arguments:
 % time: uncleaned time data from imported csv.
@@ -16,7 +16,7 @@ function[TimeClean, SpeedClean] = M3_sub1_124_23_sdimeola(time, rawY)
 % SpeedClean: Array of cleaned speed data points
 %
 % Assignment Information
-%   Assignment:     M2
+%   Assignment:     M3
 %   Team member:    Skyler DiMeola, sdimeola@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:

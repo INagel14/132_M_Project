@@ -5,7 +5,7 @@ function[Tau] = M3_sub4_124_23_thussp(x,y,Vf,yL, TimeAcc)
 %This function will find the point at which the object begins to accelerate
 %and find the time constant of the model
 % Function Call
-%M2_sub4_124_23_thussp()
+%M3_sub4_124_23_thussp()
 %
 % Input Arguments
 % Velocity data and final velocity
@@ -14,7 +14,7 @@ function[Tau] = M3_sub4_124_23_thussp(x,y,Vf,yL, TimeAcc)
 %time constant
 %
 % Assignment Information
-%   Assignment:     M02, Problem 3
+%   Assignment:     M03, Problem 3
 %   Team member:    Patrick Thuss, thussp@purdue.edu 
 %   Team ID:        124-23
 %   Academic Integrity:
@@ -25,8 +25,8 @@ function[Tau] = M3_sub4_124_23_thussp(x,y,Vf,yL, TimeAcc)
 
 %% ____________________
 %% INITIALIZATION
-data(:,1)= x;
-data(:,2)= y;
+data(:,1)= x; %initializes independent val (time) (seconds)
+data(:,2)= y; %initializes dependent val (speed)
 
 var = 0; %boolean variable marked as false
 tolerance = 0.25; %tolerance for velocity change
@@ -38,38 +38,15 @@ tolerance = 0.25; %tolerance for velocity change
 
 targetVal = 0.632*Vf;
 
-indx = find(y >= targetVal, 1);
+indx = find(y >= targetVal, 1); %find when speed is greater than 
+% 63.2 of final V
 
-Tau = x(indx)-TimeAcc;
-
-
-
-
-
-
-
-%find y of tau
-%  y_tau = yL + 0.632 * (Vf - yL); 
-% 
-% while(var == 0) %while boolean variable is false
-% 
-%     if y_tau <= (y(indx) + tolerance) && y_tau >= (y(indx) - tolerance)
-%         Tau = x(indx) - TimeAcc;
-%         var = 1; %marks variable as true if the selected y val is greater
-% %than y_tau
-%     end
-%     indx = indx +1; %index if untrue
-% end
-% 
-% %  %find the closes y value to that in the data
-% %  [~, apprxYTauIdx] = min(abs(data(2,:) - y_tau));
-% % %find the x value of that and then subtract ts to get tau
-% % Tau = data(apprxYTauIdx,1) - TimeAcc;
-fprintf('The value for Tau is: %0.2f\n',Tau);
+Tau = x(indx)-TimeAcc; %Calculate Tau
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
-
+fprintf('The value for Tau is: %0.2f\n',Tau); %print tau val
+%print tau
 
 %% ____________________
 %% RESULTS
