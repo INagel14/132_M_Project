@@ -1,4 +1,4 @@
-function[] = M3_Benchmark_124_23(time, TimeClean, SpeedClean, TimeAcc, Tau, Vi, Vf, indx);
+function[] = M3_Benchmark_124_23(time, rawY, indx);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run the skeleton function that runs all the functions
@@ -25,27 +25,20 @@ function[] = M3_Benchmark_124_23(time, TimeClean, SpeedClean, TimeAcc, Tau, Vi, 
 %% ____________________
 %% INITIALIZATION
 
-% Initialize Benchmark values:
-benchmarkData = readmatrix("Sp25_cruiseAuto_M3benchmark_data.csv");
-TimeBenchmark = benchmarkData(:,1);
-SpeedCompactBenchmark = benchmarkData(:, 2);
-SpeedSedanBenchmark = benchmarkData(:, 3);
-SpeedSuvBenchmark = benchmarkData(:, 4)
 
-
-% Compact Car
+% Compact Car Test Numbers
 compTimeAccBench = 6.21;
 compTauBench = 1.51;
 compViBench = -0.09;
 compVfBench = 25.08;
 
-% Sedan Car
+% Sedan Car Test Numbers
 sedanTimeAccBench = 9.39;
 sedanTauBench = 1.96;
 sedanViBench = -0.22;
 sedanVfBench = 24.72;
 
-% SUV Car
+% SUV Car Test Numbers
 SUVTimeAccBench = 6.85;
 SUVTauBench = 2.80;
 SUVViBench = 0.19;
@@ -54,100 +47,92 @@ SUVVfBench = 25.18;
 % Create new index
 newIdx = indx-1;
 
+
 %% ____________________
 %% CALCULATIONS
 
-% Part 4a: Calculate SSE to evaluate data cleaning
-timeLength = length(TimeClean);
-
-
-% Part 4b: Algo accuracy analysis 
-
-% Calculate percent error in TimeAcc:
-
-
-
-
-
-
-
-
+% If we are on the first trial (compact car)
 if newIdx == 1
-    % Calc here
-    
-    % SSE calculations
-    for i = 1:timeLength
-    % Calculate SSE
-    SSE = sum((time(i)-TimeClean(i))^2)/timeLength;
-
+    % Make a vector to store the model y values
+ yModel = zeros(size(time));
+    % Iterate through the entire vector
+    for idx = 1:length(time)
+        % Part 1 of the piecewise equation
+        if time(idx) < compTimeAccBench
+            yModel(idx) = compViBench;
+        else
+            % Part 2 of the piecewiese equation
+            yModel(idx) = compViBench + (compVfBench - compViBench) * ...
+            (1 - exp(-(time(idx) - compTimeAccBench)/compTauBench));
+        end
     end
-    % Find TimeAccc error
-    errorTimeAcc = (abs((compTimeAccBench - TimeAcc) ./ compTimeAccBench)) .* 100;
-    % Find Tau error
-    errorTau = (abs((compTauBench - Tau) ./ compTauBench)) .* 100;
-    % Find Vi error
-    errorVi = (abs((compViBench - Vi) ./ compViBench)) .* 100;
-    % Fnd Vf
-    errorVf = (abs((compVfBench - Vf) ./ compVfBench)) .* 100;
-    % Output all data
-    fprintf('The percent error in the acceleration start time is %0.2f %% \n',errorTimeAcc);
-    fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
-    fprintf('The percent error in the initial velocity is %0.2f %% \n',errorVi);
-    fprintf('The percent error in the final velocity is %0.2f %% \n',errorVf);
-    fprintf('The SSE is: %0.2f\n',SSE);
 
+% If we are on the second trial (sedan)
 elseif newIdx == 2
-    % Calc here
-    
-
-    for i = 1:timeLength
-    % Calculate SSE
-    SSE = sum((time(i)-TimeClean(i))^2)/timeLength;
-
+    % Make a vector of the size to store the numbers
+    yModel = zeros(size(time));
+    % Iterate through the entire vector
+    for idx = 1:length(time)
+        if time(idx) < sedanTimeAccBench
+            % First part of piecewise equation
+            yModel(idx) = sedanViBench;
+        else
+            % Second part of piecewise equation
+            yModel(idx) = sedanViBench + (sedanVfBench - sedanViBench) * ...
+            (1 - exp(-(time(idx) - sedanTimeAccBench)/sedanTauBench));
+        end
     end
-    % Find TimeAccc error
-    errorTimeAcc = (abs((sedanTimeAccBench - TimeAcc) ./ sedanTimeAccBench)) .* 100;
-    % Find Tau error
-    errorTau = (abs((sedanTauBench - Tau) ./ sedanTauBench)) .* 100;
-    % Find Vi error
-    errorVi = (abs((sedanViBench - Vi) ./ sedanViBench)) .* 100;
-    % Fnd Vf
-    errorVf = (abs((sedanVfBench - Vf) ./ sedanVfBench)) .* 100;
-    % Output all data
-    fprintf('The percent error in the acceleration start time is %0.2f %% \n',errorTimeAcc);
-    fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
-    fprintf('The percent error in the initial velocity is %0.2f %% \n',errorVi);
-    fprintf('The percent error in the final velocity is %0.2f %% \n',errorVf);
-    fprintf('The SSE is: %0.2f\n',SSE);
 
+% If this is the third trial (SUV)
 elseif newIdx == 3
-    % Calc here
-
-    for i = 1:timeLength
-    % Calculate SSE
-    SSE = sum((time(i)-TimeClean(i))^2)/timeLength;
+     % Make a vector of blanks
+     yModel = zeros(size(time));
+     % Iterate through all of it
+    for idx = 1:length(time)
+        if time(idx) < SUVTimeAccBench
+            % First part of equation
+            yModel(idx) = SUVViBench;
+        else
+            % Second part of equation
+            yModel(idx) = SUVViBench + (SUVVfBench - SUVViBench) * ...
+            (1 - exp(-(time(idx) - SUVTimeAccBench)/SUVTauBench));
+        end
     end
 
-    % Find TimeAccc error
-    errorTimeAcc = (abs((SUVTimeAccBench - TimeAcc) ./ SUVTimeAccBench)) .* 100;
-    % Find Tau error
-    errorTau = (abs((SUVTauBench - Tau) ./ SUVTauBench)) .* 100;
-    % Find Vi error
-    errorVi = (abs((SUVViBench - Vi) ./ SUVViBench)) .* 100;
-    % Fnd Vf
-    errorVf = (abs((SUVVfBench - Vf) ./ SUVVfBench)) .* 100;
-    % Output all data
-    fprintf('The percent error in the acceleration start time is %0.2f %% \n',errorTimeAcc);
-    fprintf('The percent error in Tau is %0.2f %% \n', errorTau);
-    fprintf('The percent error in the initial velocity is %0.2f %% \n',errorVi);
-    fprintf('The percent error in the final velocity is %0.2f %% \n',errorVf);
-    fprintf('The SSE is: %0.2f\n',SSE);
-else
-    % Display error message?
+
 end
+
+
+% Calculate SSE
+
+% Make a vector of the length of time to simplify the function
+n = length(time);
+% Calculate the actual SSE
+SSEmod = sum((rawY - yModel).^2) / n;
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
+
+% Create a new figure
+figure;
+% Plot the raw data in orange (I added a bit of spice)
+plot(time, rawY, '-','Color','#D95319'); 
+hold on;
+% Plot the benchmark first order model in black
+plot(time, yModel, 'k-','LineWidth', 1);
+% Properly label the axis
+xlabel('Time (s)');
+ylabel('Speed (m/s)');
+% Add a title
+title('Benchmark Data vs. First-Order Model');
+% Add a legend in the best spot
+legend('Benchmark Data', 'Benchmark Model', 'Location','best');
+% Turn on the grid because it looks good
+grid on;
+
+
+% Display SSE_mod
+fprintf('SSEmod using benchmark parameters: %.4f\n', SSEmod);
 
 
 
