@@ -1,7 +1,7 @@
 function[] = M3_Benchmark_124_23(time, rawY, indx)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
-% Run the skeleton function that runs all the functions
+% Run the skeleton function that runs all the functions for benchmark data
 %
 % Function Call
 % [] = M3_Benchmark_124_23(time, rawY, indx)
@@ -29,22 +29,22 @@ function[] = M3_Benchmark_124_23(time, rawY, indx)
 
 
 % Compact Car Test Numbers
-compTimeAccBench = 6.21;
-compTauBench = 1.51;
-compViBench = -0.09;
-compVfBench = 25.08;
+compTimeAccBench = 6.21; %seconds
+compTauBench = 1.51; %constant
+compViBench = -0.09; %meters per second initial
+compVfBench = 25.08; %meters per second final
 
 % Sedan Car Test Numbers
-sedanTimeAccBench = 9.39;
-sedanTauBench = 1.96;
-sedanViBench = -0.22;
-sedanVfBench = 24.72;
+sedanTimeAccBench = 9.39;%seconds
+sedanTauBench = 1.96; %constant
+sedanViBench = -0.22; %meters per second initial
+sedanVfBench = 24.72;%meters per second final
 
 % SUV Car Test Numbers
-SUVTimeAccBench = 6.85;
-SUVTauBench = 2.80;
-SUVViBench = 0.19;
-SUVVfBench = 25.18;
+SUVTimeAccBench = 6.85;%seconds
+SUVTauBench = 2.80; %constant
+SUVViBench = 0.19;%meters per second initial
+SUVVfBench = 25.18;%meters per second final
 
 % Create new index
 newIdx = indx-1;
