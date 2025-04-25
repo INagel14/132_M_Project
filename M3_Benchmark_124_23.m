@@ -1,19 +1,21 @@
-function[] = M3_Benchmark_124_23(time, rawY, indx);
+function[] = M3_Benchmark_124_23(time, rawY, indx)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run the skeleton function that runs all the functions
 %
 % Function Call
-% [] = M3_Benchmark_124_23()
+% [] = M3_Benchmark_124_23(time, rawY, indx)
 %
 % Input Arguments
-% None
+% time - the raw time data
+% rawY - the raw velocity data
 %
 % Output Arguments
 % None
 %
 % Assignment Information
 %   Assignment:     M3
+%   Team member:    Isaac Nagel, inagel@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:
 %     [N/A] We worked with one or more peers but our collaboration
