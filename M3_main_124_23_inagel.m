@@ -74,14 +74,10 @@ while count <= numCol
     [Vi, Vf] = M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc);
     % Call sub 4
     [Tau] = M3_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
-    % Call benchmark
-    M3_Benchmark_124_23(time, rawY, count);
-    % Call performance
-    M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, time, rawY);
-
     
-
-    % Calculate percent error
+    
+    
+      % Calculate percent error
 
 if count == 2
  
@@ -160,6 +156,17 @@ end
 
     % Display SSE_mod
     fprintf('SSEmod using algorithm parameters: %.4f\n', SSEmodAlgo);
+    
+    
+    
+    
+    
+    % Call benchmark
+    M3_Benchmark_124_23(time, rawY, count);
+    % Call performance
+    M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, time, rawY, count);
+
+    
 
     % Make a gap because the data is hard to read
     fprintf('\n\n');
