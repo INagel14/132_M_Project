@@ -26,6 +26,12 @@ function[] = M3_Benchmark_124_23(time, TimeClean, SpeedClean, TimeAcc, Tau, Vi, 
 %% INITIALIZATION
 
 % Initialize Benchmark values:
+benchmarkData = readmatrix("Sp25_cruiseAuto_M3benchmark_data.csv");
+TimeBenchmark = benchmarkData(:,1);
+SpeedCompactBenchmark = benchmarkData(:, 2);
+SpeedSedanBenchmark = benchmarkData(:, 3);
+SpeedSuvBenchmark = benchmarkData(:, 4)
+
 
 % Compact Car
 compTimeAccBench = 6.21;
@@ -59,19 +65,16 @@ timeLength = length(TimeClean);
 
 % Calculate percent error in TimeAcc:
 
+
+
+
+
+
+
+
 if newIdx == 1
     % Calc here
-    sseVecStart = find(SpeedClean = vi);
-    sseVecEnd = find(SpeedClean = vf);
-   
-    sseVecSpeed = SpeedClean(sseVecStart : sseVecEnd);
-    sseVecTime = TimeClean(sseVecStart : sseVecEnd);
     
-    logSseVecSpeed = log(sseVecSpeed);
-    logSseVecTime = log(sseVecTime);
-
-    %% INSERT CORRECT ONES HERE: 
-    polyfit(sseVecTime, sseVecSpeed, 1);
     % SSE calculations
     for i = 1:timeLength
     % Calculate SSE
