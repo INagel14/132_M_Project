@@ -41,22 +41,22 @@ time = testData(:,1);
 count = 2;
 
 % Compact Car Test Numbers
-compTimeAccBench = 6.21;
-compTauBench = 1.51;
-compViBench = -0.09;
-compVfBench = 25.08;
+compTimeAccBench = 6.21; %time accelertaion in seconds
+compTauBench = 1.51; %constant
+compViBench = -0.09; %velocity intial m/s
+compVfBench = 25.08;%velocity final
 
 % Sedan Car Test Numbers
-sedanTimeAccBench = 9.39;
-sedanTauBench = 1.96;
-sedanViBench = -0.22;
-sedanVfBench = 24.72;
+sedanTimeAccBench = 9.39; %time accelertaion in seconds
+sedanTauBench = 1.96;%constant
+sedanViBench = -0.22;%velocity intial m/s
+sedanVfBench = 24.72;%velocity final m/s
 
 % SUV Car Test Numbers
-SUVTimeAccBench = 6.85;
-SUVTauBench = 2.80;
-SUVViBench = 0.19;
-SUVVfBench = 25.18;
+SUVTimeAccBench = 6.85; %time accelertaion in seconds
+SUVTauBench = 2.80;%constant
+SUVViBench = 0.19;%velocity intial m/s
+SUVVfBench = 25.18;%velocity final m/s
 %% ____________________
 %% CALCULATIONS
 
