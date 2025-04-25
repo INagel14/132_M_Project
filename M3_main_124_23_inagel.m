@@ -61,9 +61,9 @@ while indx <= numCol
 
   [Tau] = M3_sub4_124_23_thussp(TimeClean, SpeedClean, Vf, yL,TimeAcc);
 
-  M3_Benchmark_124_23(time, TimeClean, SpeedClean, TimeAcc, Tau, Vi, Vf, indx);
+  M3_Benchmark_124_23(time, rawY, indx);
   
-  M3_Performance_124_23(TimeAcc, Tau, Vi, Vf);
+  %M3_Performance_124_23(TimeAcc, Tau, Vi, Vf);
 
     indx = indx +1;
 
