@@ -126,7 +126,7 @@ plot(time, yModel, 'k-','LineWidth', 1);
 xlabel('Time (s)');
 ylabel('Speed (m/s)');
 % Add a title
-title('Benchmark Data vs. Benchmark First-Order Model');
+title(['Trial #', num2str(newIdx),' Benchmark Data vs. Benchmark First-Order Model']);
 % Add a legend in the best spot
 legend('Benchmark Data', 'Benchmark Model', 'Location','best');
 % Turn on the grid because it looks good

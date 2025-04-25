@@ -103,8 +103,11 @@ plot(TimeShifted, yModel, '-','LineWidth',1.5,'Color',[0 0.447 0.741]);
 plot(TimeShifted,y_right,'-','LineWidth',2.5,'Color',[0.494 0.184 0.556]);
 % Plot the left bound
 plot(TimeShifted,y_left, '-', 'LineWidth',2.5, 'Color',[0.466 0.674 0.188]);
-title('Benchmark Raw Data And Algorithm Model With Performance Boundaries');
-legend('Raw Data', 'Algorithm','Right Bound', 'Left Bound');
+title(['Trail #', num2str(trialNum),' Benchmark Raw Data And Algorithm Model With Performance Boundaries']);
+% Properly label the axis
+xlabel('Time (s)');
+ylabel('Speed (m/s)');
+legend('Raw Data', 'Algorithm','Right Bound', 'Left Bound', 'Location','best');
 grid on;
 
 
