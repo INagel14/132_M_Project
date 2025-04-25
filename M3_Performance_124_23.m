@@ -1,26 +1,30 @@
-function[] = M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, time, rawY)
+function[] = M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, time, rawY, count)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ENGR 132 
 % Run the skeleton function that runs all the functions
 %
 % Function Call
-% [] = M3_Performance_124_23()
+% [] = M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, time, rawY)
 %
 % Input Arguments
-% None
+% TimeAcc - The time when the acceleration starts
+% Tau - The time constant
+% Vi - The initial velocity
+% Vf - The final velocity
+% time - The raw time data
+% rawY - The raw velocity data
+% count - The current iteration for the data or trial number + 1
 %
 % Output Arguments
 % None
 %
 % Assignment Information
 %   Assignment:     M3
+%   Team member:    Isaac Nagel, inagel@purdue.edu
 %   Team ID:        124-23
 %   Academic Integrity:
 %     [N/A] We worked with one or more peers but our collaboration
 %        maintained academic integrity.
-
-
-
 % 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -42,7 +46,7 @@ y_h_right = 23.36;
 y_left = zeros(1,31);
 y_right = zeros(1,31);
 
-
+trialNum = count - 1;
 %% ____________________
 %% CALCULATIONS
 
