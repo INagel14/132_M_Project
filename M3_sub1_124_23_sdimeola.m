@@ -80,11 +80,11 @@ end
 % xlabel('Cleaned Time Data')
 % ylabel('Cleaned Speed Data')
 % 
-% figure;
-% plot(TimeClean,SpeedClean,'-g');
-%disp(isSpeedFull);
-%disp(isTimeFull);
-%disp(count);
+figure;
+plot(TimeClean,SpeedClean,'-g');
+% disp(isSpeedFull);
+% disp(isTimeFull);
+% disp(count);
 %% ____________________
 %% RESULTS
 %fprintf('Data successfully passed to subfunction 2 programmed by Skyler DiMeola.\n')

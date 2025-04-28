@@ -43,6 +43,8 @@ indx = find(y >= targetVal, 1); %find when speed is greater than
 
 Tau = x(indx)-TimeAcc; %Calculate Tau
 
+
+
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
 fprintf('The value for Tau is: %0.2f\n',Tau); %print tau val

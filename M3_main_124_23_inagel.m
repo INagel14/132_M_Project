@@ -133,20 +133,20 @@ while count <= numCol
 
 
 
-    % Make model: 
-    % Make a vector of the size to store the numbers
-    yModel = zeros(size(time));
-    % Iterate through the entire vector
-    for idx = 1:length(time)
-        if time(idx) < TimeAcc
-            % First part of piecewise equation
-            yModel(idx) = Vi;
-        else
-            % Second part of piecewise equation
-            yModel(idx) = Vi + (Vf - Vi) * ...
-            (1 - exp(-(time(idx) - TimeAcc)/Tau));
-        end
-    end
+    % % Make model: 
+    % % Make a vector of the size to store the numbers
+    % yModel = zeros(size(time));
+    % % Iterate through the entire vector
+    % for idx = 1:length(time)
+    %     if time(idx) < TimeAcc
+    %         % First part of piecewise equation
+    %         yModel(idx) = Vi;
+    %     else
+    %         % Second part of piecewise equation
+    %         yModel(idx) = Vi + (Vf - Vi) * ...
+    %         (1 - exp(-(time(idx) - TimeAcc)/Tau));
+    %     end
+    % end
 
     % Calculate SSE
 
@@ -165,7 +165,7 @@ while count <= numCol
     % % Call benchmark
     % M3_Benchmark_124_23(time, rawY, count);
     % % Call performance
-    % M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, time, rawY, count);
+    M3_Performance_124_23(TimeAcc, Tau, Vi, Vf, time, rawY , count);
     % 
     %  %Create a new figure
     % figure;
