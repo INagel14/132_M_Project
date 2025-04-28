@@ -36,16 +36,16 @@ viydata= SpeedClean(1:round(TimeAcc)); % y data before acceleration
 finaly= SpeedClean(round(TimeAcc):end); % y/speed values of data after acceleration
 finalx= TimeClean(round(TimeAcc):end); % x/time values of data after acceleration
 
-slope_threshold= 0.01; % value that makes sure slope is close to 0
+slope_threshold= 0; % value that makes sure slope is close to 0
 index= 0; %setting index for determing when flatenned curve starts
-Window= 350;
+Window= 375;
 
 %% ____________________
 %% CALCULATIONS
 %Output = Input .* 3; %practicing subfunction
 
 timeLength = length(finalx); % makes vector for all time values
-slope = zeros(1, timeLength-4); % makes a vector to iterate through slope in function over multiple data points
+slope = zeros(1, timeLength-Window); % makes a vector to iterate through slope in function over multiple data points
 % Find Vf
 
 for idx = (Window+1):timeLength
