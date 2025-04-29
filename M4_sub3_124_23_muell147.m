@@ -28,9 +28,7 @@ function [Vi, Vf]=  M4_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %% ____________________
 %% INITIALIZATION
 Vf = max(SpeedClean);
-cleanMean = movmean(SpeedClean, 40);  % Apply moving average filter to smooth the data
 
-vixdata = TimeClean(1:round(TimeAcc));  % x data before acceleration
 viydata = SpeedClean(1:round(TimeAcc));  % y data before acceleration
 
 finaly = SpeedClean(round(TimeAcc):end);  % y/speed values of data after acceleration
@@ -41,7 +39,7 @@ Window = 375;  % Sliding window for slope calculation
 timeLength = length(finalx);  % Total length of time data after acceleration
 
 slope = zeros(1, timeLength - Window);  % Pre-allocate slope vector
-flat_indices = [];  % Initialize array to store indices of flat areas
+flat_points = [];  % Initialize array to store indices of flat areas
 
 %% ____________________
 %% CALCULATIONS
@@ -54,21 +52,34 @@ for idx = (Window + 1):timeLength
     slope(idx - Window) = changeY / changeX;
 end
 
-% Find all instances where slope is less than the threshold (flat regions)
+% START OF IMPROVEMENT #1 (Use multiple slope points, not just one)
+
+% Go through each point
 for idx = 1:length(slope)
+    % Find where the slope is less than the set threshold
     if slope(idx) < slope_threshold
-        flat_indices = [flat_indices, idx];  % Append the index where slope becomes flat
+        % Add to index if it is a flat spot
+        flat_points = [flat_points, idx];  
     end
 end
 
-% Determine the final velocity by averaging the last segment of flat data
-if ~isempty(flat_indices)
-    avgFinalStart = flat_indices(end) + Window - 1;  % Use the last flat index to start final velocity
-    finalvelocityVals = finaly(avgFinalStart:end);  % Extract final velocity data
-    Vf = mean(finalvelocityVals);  % Calculate the average final velocity
+% If the vector of flat points is not empty
+if ~isempty(flat_points)
+    % Take the very last point of the flat points (adjust for window)
+    avgFinalStart = flat_points(end) + Window - 1;  
+    % Create new vector of the SpeedClean data from that point to the end
+    finalvelocityVals = finaly(avgFinalStart:end);  
+    % Take the mean of all those points to approximate the final velocity
+    Vf = mean(finalvelocityVals);
 else
-    Vf = NaN;  % If no flat region is found, return NaN (or handle accordingly)
+    % Output error message
+    % (Useful for testing (i.e your slope threshold is too strict))
+    Vf = NaN; 
 end
+
+% END OF IMPROVEMENT #2
+
+
 
 % Calculate the initial velocity as the mean of the data before acceleration
 Vi = mean(viydata);
