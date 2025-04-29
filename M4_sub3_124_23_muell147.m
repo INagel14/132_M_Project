@@ -52,6 +52,8 @@ for idx = (Window + 1):timeLength
     slope(idx - Window) = changeY / changeX;
 end
 
+
+
 % START OF IMPROVEMENT #1 (Use multiple slope points, not just one)
 
 % Go through each point
@@ -78,6 +80,9 @@ else
 end
 
 % END OF IMPROVEMENT #2
+
+
+
 
 
 
