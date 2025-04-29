@@ -87,6 +87,3 @@ end
 % source, either modified or unmodified. Neither have we provided
 % access to my code to another. The program we are submitting
 % is our own original work.
-
-
-
