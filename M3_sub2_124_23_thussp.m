@@ -57,12 +57,21 @@ end
 % Find the index for the final velocity
 Index = find(slope > slope_threshold, 1);
 
-% Go back one index to determine the actual spot
-TimeAcc_index = Index + Window-1;
+% If found, use this index to determine the actual time
+if ~isempty(Index)
+    % Find the time corresponding to the first point that exceeds the threshold
+    TimeAcc_index = Index + Window - 1;
+    TimeAcc = x(TimeAcc_index);  % Time at which acceleration begins
+    
+    % Use nearest time index to get the velocity value at TimeAcc
+    [~, i] = min(abs(x - TimeAcc));  % Find closest time sample
+    yL = y(i);  % Velocity at TimeAcc
+else
+    % If no acceleration is detected, leave as NaN
+    TimeAcc = NaN;
+    yL = NaN;
+end
 
-TimeAcc = x(TimeAcc_index); %actual time at x using index
-
-yL = y(TimeAcc_index); %assigns yL as the velocity at timeAcc
 
 fprintf('The time of acceleration is: %0.2f\n',TimeAcc); %prints time acc
 
