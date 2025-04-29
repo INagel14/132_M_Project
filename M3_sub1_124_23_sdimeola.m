@@ -80,8 +80,8 @@ end
 % xlabel('Cleaned Time Data')
 % ylabel('Cleaned Speed Data')
 % 
-figure;
-plot(TimeClean,SpeedClean,'-g');
+% figure;
+% plot(TimeClean,SpeedClean,'-g');
 % disp(isSpeedFull);
 % disp(isTimeFull);
 % disp(count);
