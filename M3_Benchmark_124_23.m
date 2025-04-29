@@ -44,7 +44,7 @@ sedanVfBench = 24.72;%meters per second final
 SUVTimeAccBench = 6.85;%seconds
 SUVTauBench = 2.80; %constant
 SUVViBench = 0.19;%meters per second initial
-SUVVfBench = 25.18;%meters per second final
+SUVVfBench = 24.18;%meters per second final
 
 % Create new index
 newIdx = indx-1;
