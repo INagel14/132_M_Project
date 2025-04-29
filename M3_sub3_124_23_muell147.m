@@ -25,101 +25,60 @@ function [Vi, Vf]=  M3_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% ____________________
+%% ____________________
 %% INITIALIZATION
+Vf = max(SpeedClean);
+cleanMean = movmean(SpeedClean, 40);  % Apply moving average filter to smooth the data
 
-Vf= max(SpeedClean);
-cleanMean = movmean(SpeedClean,40); %cleaning y values
+vixdata = TimeClean(1:round(TimeAcc));  % x data before acceleration
+viydata = SpeedClean(1:round(TimeAcc));  % y data before acceleration
 
-vixdata= TimeClean(1:round(TimeAcc)); % x data before acceleration
-viydata= SpeedClean(1:round(TimeAcc)); % y data before acceleration
+finaly = SpeedClean(round(TimeAcc):end);  % y/speed values of data after acceleration
+finalx = TimeClean(round(TimeAcc):end);  % x/time values of data after acceleration
 
-finaly= SpeedClean(round(TimeAcc):end); % y/speed values of data after acceleration
-finalx= TimeClean(round(TimeAcc):end); % x/time values of data after acceleration
+slope_threshold = -0.01;  % Value to determine flatness (more strict)
+Window = 375;  % Sliding window for slope calculation
+timeLength = length(finalx);  % Total length of time data after acceleration
 
-slope_threshold= 0; % value that makes sure slope is close to 0
-index= 0; %setting index for determing when flatenned curve starts
-Window= 375;
+slope = zeros(1, timeLength - Window);  % Pre-allocate slope vector
+flat_indices = [];  % Initialize array to store indices of flat areas
 
 %% ____________________
 %% CALCULATIONS
-%Output = Input .* 3; %practicing subfunction
 
-timeLength = length(finalx); % makes vector for all time values
-slope = zeros(1, timeLength-Window); % makes a vector to iterate through slope in function over multiple data points
-% Find Vf
-
-for idx = (Window+1):timeLength
-    % Find Y2 - Y1d
-    changeY = SpeedClean(idx) - SpeedClean(idx-Window);
-
-    % Find X2 - X1
-    changeX = TimeClean(idx) - TimeClean(idx-Window);
-
-    slope(idx-Window) = changeY/changeX;
+% Calculate slope for the entire data range
+for idx = (Window + 1):timeLength
+    % Calculate change in Y (speed) and X (time)
+    changeY = SpeedClean(idx) - SpeedClean(idx - Window);
+    changeX = TimeClean(idx) - TimeClean(idx - Window);
+    slope(idx - Window) = changeY / changeX;
 end
 
-% Find the index for the final velocity
-veloFinalIndex = find(slope < slope_threshold, 1);
+% Find all instances where slope is less than the threshold (flat regions)
+for idx = 1:length(slope)
+    if slope(idx) < slope_threshold
+        flat_indices = [flat_indices, idx];  % Append the index where slope becomes flat
+    end
+end
 
-% Go back one index to determine the actual spot
-avgFinalStart = veloFinalIndex + Window-1;
+% Determine the final velocity by averaging the last segment of flat data
+if ~isempty(flat_indices)
+    avgFinalStart = flat_indices(end) + Window - 1;  % Use the last flat index to start final velocity
+    finalvelocityVals = finaly(avgFinalStart:end);  % Extract final velocity data
+    Vf = mean(finalvelocityVals);  % Calculate the average final velocity
+else
+    Vf = NaN;  % If no flat region is found, return NaN (or handle accordingly)
+end
 
-finalvelocityVals = finaly(avgFinalStart:end);
-
-Vf = mean(finalvelocityVals);
-
-
-
-
-% Find Vi
+% Calculate the initial velocity as the mean of the data before acceleration
 Vi = mean(viydata);
 
-% Change
+%% ____________________
+%% FORMATTED TEXT/FIGURE DISPLAYS
+fprintf('The initial velocity is %.3f\n', Vi);
+fprintf('The final velocity is %.3f\n', Vf);
 
-
-
-
-
-
-
-
-
-
-
-%finding linear model of start to acceleration time
-% linstart= polyfit(vixdata, viydata, 1); 
-% Vimodel= linstart(1)* vixdata+ linstart(2);
-% 
-% lastx= vixdata(end); %finding last x value if needed for reference or graphing
-% lasty= polyval(linstart, lastx); %finding last y value according to regression
-% firsty= linstart(2); %first y value is y intercept-- velocity can't be negative
-% firstx= 0; %first x value is at intercept
-% 
-% change_line= abs(SpeedClean(2:end)-SpeedClean(1:end-1)); %finding the difference between side by side points
-% 
-% for y= 1:length(change_line) 
-%      if change_line(y) < slope_threshold && index == 0
-%          flat_indices = [flat_indices, y];
-%          index= 1;
-%      end
-% end
-% 
-% Vfstart_index = flat_indices(1) + 1; %identifying start point of data
-% Vfdata = cleanMean(Vfstart_index:end); % creating vector of data for final velocity
-% 
-% 
-% Vi= mean([lasty, firsty]); % averaging final and intial y values to find initial velocity
-% Vf= mean(Vfdata);
-
-
-
-% %% FORMATTED TEXT/FIGURE DISPLAYS
-fprintf('The initial velocity is %.3f\n', Vi)
-fprintf('The final velocity is %.3f\n', Vf)
-% 
-% %% ____________________
-% %% RESULTS
-
+end
 
 
 %% ____________________
