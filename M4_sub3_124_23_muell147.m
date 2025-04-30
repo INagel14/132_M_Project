@@ -57,6 +57,17 @@ end
 
 % START OF IMPROVEMENT #1 (Use multiple slope points, not just one)
 
+% OLD CODE: 
+        % % Find the index for the final velocity
+        % veloFinalIndex = find(slope < slope_threshold, 1);
+        % 
+        % % Go back one index to determine the actual spot
+        % avgFinalStart = veloFinalIndex + Window-1;
+        % 
+        % finalvelocityVals = finaly(avgFinalStart:end);
+        % 
+        % Vf = mean(finalvelocityVals);
+
 % Go through each point
 for idx = 1:length(slope)
     % Find where the slope is less than the set threshold
