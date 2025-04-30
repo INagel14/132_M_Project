@@ -22,6 +22,7 @@ function [Vi, Vf]=  M4_sub3_124_23_muell147(TimeClean, SpeedClean, TimeAcc)
 %   Academic Integrity:
 %     [N/A] We worked with one or more peers but our collaboration
 %        maintained academic integrity.
+%    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% ____________________
@@ -79,7 +80,7 @@ else
     Vf = NaN; 
 end
 
-% END OF IMPROVEMENT #2
+% END OF IMPROVEMENT #1
 
 
 
