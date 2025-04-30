@@ -88,20 +88,31 @@ yModel = zeros(size(TimeShifted));
         end
     end
 
-passFlag = true;  % assume pass
+
+% START OF IMPROVEMENT #2
+
+passFlag = true;  % passes (hopefully)
 
 for idx = 1:length(TimeShifted)
     % if model ever goes above the top bound OR below the bottom bound
     if yModel(idx) > y_left(idx) || yModel(idx) < y_right(idx)
+        % If crosses bounds, mark as false
         passFlag = false;
     end
 end
 
 if passFlag
-    fprintf('Trial %d PASS: Model stayed within bounds for all time steps.\n', trialNum);
+    % If it didn't cross any bounds, output this
+    fprintf('Trial %d PASSED: Model stayed within bounds.\n', trialNum);
 else
-    fprintf('Trial %d FAIL: Model crossed a bound at least once.\n', trialNum);
+    % Output that it was false so it therefor failed
+    fprintf('Trial %d FAILED: Model crossed a bound.\n', trialNum);
 end
+
+
+% END OF IMPROVEMENT #2
+
+
 
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
