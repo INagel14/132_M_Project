@@ -34,7 +34,7 @@ viydata = SpeedClean(1:round(TimeAcc));  % y data before acceleration
 finaly = SpeedClean(round(TimeAcc):end);  % y/speed values of data after acceleration
 finalx = TimeClean(round(TimeAcc):end);  % x/time values of data after acceleration
 
-slope_threshold = -0.01;  % Value to determine flatness (more strict)
+slope_threshold = 0.01;  % Value to determine flatness (more strict)
 Window = 375;  % Sliding window for slope calculation
 timeLength = length(finalx);  % Total length of time data after acceleration
 
