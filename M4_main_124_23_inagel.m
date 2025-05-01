@@ -31,7 +31,7 @@ function[] = M4_main_124_23_inagel()
 tic
 
 % Pull all data from the spreadsheet
-testData = readmatrix('Sp25_cruiseAuto_experimental_data.csv','NumHeaderLines',1);
+testData = readmatrix('Sp25_cruiseAuto_M3benchmark_data.csv','NumHeaderLines',1);
 
 numCol = width(testData);
 %numCol = 2;
@@ -139,37 +139,37 @@ while count <= numCol
 % 
 % 
 % 
-%     % Make model: 
-%     % Make a vector of the size to store the numbers
-%     yModel = zeros(size(TimeClean));
-%     % Iterate through the entire vector
-%     for idx = 1:length(TimeClean)
-%         if TimeClean(idx) < TimeAcc
-%             % First part of piecewise equation
-%             yModel(idx) = Vi;
-%         else
-%             % Second part of piecewise equation
-%             yModel(idx) = Vi + (Vf - Vi) * ...
-%             (1 - exp(-(TimeClean(idx) - TimeAcc)/Tau));
-%         end
-%     end
+    % Make model: 
+    % Make a vector of the size to store the numbers
+    yModel = zeros(size(TimeClean));
+    % Iterate through the entire vector
+    for idx = 1:length(TimeClean)
+        if TimeClean(idx) < TimeAcc
+            % First part of piecewise equation
+            yModel(idx) = Vi;
+        else
+            % Second part of piecewise equation
+            yModel(idx) = Vi + (Vf - Vi) * ...
+            (1 - exp(-(TimeClean(idx) - TimeAcc)/Tau));
+        end
+    end
 % 
 %     %Calculate SSE
 % 
-%     % Make a vector of the length of time to simplify the function
-%     n = length(TimeClean);
-%     % Calculate the actual SSE
-%     SSEmodAlgo = sum((SpeedClean - yModel).^2) / n;
-% 
-%     % Display SSE_mod
-%     fprintf('SSEmod using algorithm parameters: %.4f\n', SSEmodAlgo);
+    % Make a vector of the length of time to simplify the function
+    n = length(TimeClean);
+    % Calculate the actual SSE
+    SSEmodAlgo = sum((SpeedClean - yModel).^2) / n;
+
+    % Display SSE_mod
+    fprintf('SSEmod using algorithm parameters: %.4f\n', SSEmodAlgo);
 % 
 % 
 % 
 % 
 % 
 %     % Call benchmark
-%     M4_Benchmark_124_23(time, rawY, count);
+     M4_Benchmark_124_23(time, rawY, count);
 %     % Call performance
      M4_Performance_124_23(TimeAcc, Tau, Vi, Vf, time, rawY , count);
 %     % 
