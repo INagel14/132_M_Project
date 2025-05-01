@@ -54,6 +54,24 @@ for idx = (Window+1):timeLength
 
 end
 
+
+% START OF IMPROVEMENT 3
+
+% Old Code
+
+% % Find the index for the final velocity
+% Index = find(slope > slope_threshold, 1);
+% 
+% % Go back one index to determine the actual spot
+% TimeAcc_index = Index + Window-1;
+% 
+% TimeAcc = x(TimeAcc_index); %actual time at x using index
+% 
+% yL = y(TimeAcc_index); %assigns yL as the velocity at timeAcc
+
+
+% New Code
+
 % Find the index for the final velocity
 Index = find(slope > slope_threshold, 1);
 
@@ -72,6 +90,8 @@ else
     yL = NaN;
 end
 
+
+% END OF IMPROVEMENT 3
 
 fprintf('The time of acceleration is: %0.2f\n',TimeAcc); %prints time acc
 
