@@ -25,17 +25,18 @@ function[Tau] = M4_sub4_124_23_thussp(x,y,Vf, TimeAcc)
 
 %% ____________________
 %% INITIALIZATION
-%data(:,1)= x; %initializes independent val (time) (seconds)
-%data(:,2)= y; %initializes dependent val (speed)
+% START OF IMPROVEMENT 3
 
-%var = 0; %boolean variable marked as false
-%tolerance = 0.25; %tolerance for velocity change
+% OLD CODE:
 
-%above commented out from being old code from a previous edition
+    %data(:,1)= x; %initializes independent val (time) (seconds)
+    %data(:,2)= y; %initializes dependent val (speed)
 
+    %var = 0; %boolean variable marked as false
+    %tolerance = 0.25; %tolerance for velocity change
+    
 %% ____________________
 %% CALCULATIONS
-
 % Calculate 63.2% of the final velocity
 
 targetVal = 0.632*Vf;
@@ -46,7 +47,7 @@ indx = find(y >= targetVal, 1); %find when speed is greater than
 Tau = x(indx)-TimeAcc; %Calculate Tau
 
 
-
+% END OF IMPROVEMENT 3
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
 fprintf('The value for Tau is: %0.2f\n',Tau); %print tau val
