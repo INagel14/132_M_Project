@@ -27,6 +27,8 @@ function[TimeClean, SpeedClean] = M4_sub1_124_23_sdimeola(time, rawY)
 
 %% ____________________
 %% INITIALIZATION
+%% NEXT THREE LINES ARE SO THIS FUNCTION COULD BE TESTED WITH THE DATA 
+%% INDEPENTLY FROM THE MAIN
 %data = readmatrix("Sp25_cruiseAuto_experimental_data.csv");
 %TimeOg = data(:,1);
 %SpeedOg = data(:,2);
@@ -74,6 +76,7 @@ for i = 1:(chunkSize - chunkOverlap):(numel(TimeOg) - chunkSize + 1)
 end
 %% ____________________
 %% FORMATTED TEXT/FIGURE DISPLAYS
+%% BELOW IS CODE TO CHECK HOW GOOD THE CLEANING WAS
 % figure;
 % plot(TimeClean, SpeedClean, 'o');
 % title('Cleaned Time Data vs. Cleaned Speed Data')
